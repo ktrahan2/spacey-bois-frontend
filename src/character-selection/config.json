@@ -1,0 +1,69 @@
+
+{
+    "classes": [   
+        {
+            "classTitle": "Mystic",
+            "description": "",
+            "specialAbilities": [
+                {"Kinetics": 
+                    "You can push yourself to throw a table-sized object or propel yourself with super speed."
+                }, 
+                {"Psyblade": 
+                    "'Its not a lightsaber'"
+                }, 
+                {"Way Shield": 
+                    "Blocks projectiles"
+                }
+            ],
+            "startingEquipment": ["Psyblade"]
+        },
+        {
+            "classTitle": "Pilot",
+            "description": "",
+            "specialAbilities": [
+                {"fly good": 
+                    "Good."
+                },
+                {"fly better":
+                    "better"
+                },
+                {"fly best":
+                    "so good"
+                }
+            ],
+            "startingEquipment": ["Blaster"]
+        },
+        {
+            "classTitle": "Scoundrel",
+            "description": "",
+            "specialAbilities": [],
+            "startingEquipment": []
+        },
+        {
+            "classTitle": "Mechanic",
+            "description": "",
+            "specialAbilities": [],
+            "startingEquipment": []
+        },
+        {
+            "classTitle": "Muscle",
+            "description": "",
+            "specialAbilities": [],
+            "startingEquipment": []
+        },
+        {
+            "classTitle": "Speaker",
+            "description": "",
+            "specialAbilities": [],
+            "startingEquipment": []
+        },
+        {
+            "classTitle": "Stitch",
+            "description": "",
+            "specialAbilities": [],
+            "startingEquipment": []
+        }
+    ]
+}
+    
+
