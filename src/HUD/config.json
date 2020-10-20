@@ -1,0 +1,23 @@
+{
+    "prompts": [
+        {
+            "promptNumber": 1,
+            "promptTitle": "Episode 1: Enter the Nautilus",
+            "promptText": "Welcome to the Nautilus kid, the name is Nines and I'll be your pilot. We are a bit short on time so you'll meet the rest of the crew later. We need to make this delivery quick fast and in a hurry. We are smuggling a scientist by the name of GreeGree to the Iota Sector. He needs it kept quiet so we need to get through the Jump Gate station without any hiccups, ya hear? Pick which part of the ship you want to be in for the journey.",
+            "promptOptions": [
+                {"option1": 
+                    "Engine Room"
+                },
+                {"option2": 
+                    "Helm"   
+                },
+                {"option3": 
+                    "Cargo Bay"
+                },
+                {"option4": 
+                    "Crew Lounge"
+                }
+            ]
+        }
+    ]
+}

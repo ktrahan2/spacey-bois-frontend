@@ -1,73 +1,70 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import Classes from "./config.json"
+import ClassList from "./config.json"
+import {connect} from 'react-redux'
 
-export default class NewGame extends Component {
 
-    state = {
-        inventory: [],
-        selectedClass: "",
-        playername: "",
-    }
+function NewGame(props) {
 
-    setPlayerName = (event) => {
-        this.setState({
-            playername: event.target.value
-        })
-    }
-
-    renderClassDescription = () => {
-        return Classes.classes.map(character => {
-            if (character.classTitle === this.state.selectedClass) {
-                {return (
-                <section key={character.id}>
-                    <div>
-                        <h2>{character.classTitle}</h2>
-                        <p>{character.description}</p>
-                        {/* <div className="special-abilites">
-                            <h3>Special Abilities</h3>
-                            <h4>{Object.keys(character.specialAbilities[0])}</h4>
-                            <p>{Object.values(character.specialAbilities[0])}</p>
-                            <h4>{Object.keys(character.specialAbilities[1])}</h4>
-                            <p>{Object.values(character.specialAbilities[1])}</p>
-                            <h4>{Object.keys(character.specialAbilities[2])}</h4>
-                            <p>{Object.values(character.specialAbilities[2])}</p>
-                        </div> */}
-                        <h3>Starting Equipment</h3>
-                        <ul>
-                            <li>blaster</li>
-                            <li>tricksy shit</li>
-                            <li>other stuff</li>
-                        </ul> 
-                    </div>
-                </section>)}
-                
+    const handleClick = () => {
+        ClassList.classes.map(character => {
+            if (props.class &&
+                character.classTitle === props.class) {
+                props.addStartingEquipment(
+                    [...character.startingEquipment]
+                )
             }
         })
     }
 
-    handleSubmit = (event) => {
-        console.log(event.target)
-        event.preventDefault()
-        //send this to the first component questionaire
+    const setPlayerName = (event) => {
+        props.addPlayerName(event.target.value)
     }
 
-    selectedClass = (event) => {
-        this.setState({
-            selectedClass: event.target.value
+    const selectedClass = (event) => {
+        props.addClass(event.target.value)
+    } 
+    
+
+    const renderClassDescription = () => {
+        return ClassList.classes.map(character => {
+            if (props.class &&
+                character.classTitle === props.class) {
+                return (
+                    <section key={character.id}>
+                        <h2>{character.classTitle}</h2>
+                        <p>{character.description}</p>
+                        {/* add to this div to component that will check all starting equipment and then make the h4 */}
+                        <div className="starting-equipment">
+                            <h3>Starting Equipment</h3>
+                            <h4>{character.startingEquipment[0]}</h4>
+                            <h4>{character.startingEquipment[1]}</h4>
+                        </div>
+                    </section>
+                )
+            }
         })
     }
 
-    render() {
-        return (
-            <div>
-                <header>
-                    <Link to="/">Home Menu</Link>
-                </header>
-                <main>
-                    <form onSubmit={this.handleSubmit}>
-                        <input onChange={this.setPlayerName} name="playername" value={this.state.playername}></input>
-                        <select onChange={this.selectedClass} value={this.state.class}>
+    return (
+        <div>
+            <header>
+                <Link to="/">Home Menu</Link>
+            </header>
+            <main>
+                <form>
+                    <div className="choose-player-name">
+                        <p>Choose your characters name:</p>
+                        <input 
+                            onChange={setPlayerName} 
+                            name="playername" 
+                            placeholder="Enter Player Name" 
+                        >
+                        </input>
+                    </div>
+                    <div className="choose-class">
+                        <p>Choose a class:</p>
+                        <select onChange={selectedClass}>
                             <option value="Mystic">Msytic</option>
                             <option value="Pilot">Pilot</option>
                             <option value="Scoundrel">Scoundrel</option>
@@ -76,13 +73,40 @@ export default class NewGame extends Component {
                             <option value="Speaker">Speaker</option>
                             <option value="Stitch">Stitch</option>
                         </select>
-                        <input type="submit" value="Start Game"></input>
-                    </form>
-                    <div>
-                        {this.renderClassDescription()}
                     </div>
-                </main>
-            </div>
-        )
-    }
+                    <Link onClick={handleClick} to="/hud">Start Game</Link>
+                </form>
+                <div>
+                    {renderClassDescription()}
+                </div>
+            </main>
+        </div>
+    )
 }
+
+function mapStateToProps(state) {
+    return {
+      playerName: state.addPlayerName,
+      startingEquipment: state.addStartingEquipment,
+      class: state.addClass
+    }
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+        addClass: (characterClass) => dispatch({
+            type: "ADDCLASS", 
+            payload: characterClass
+        }),
+        addPlayerName: (playerName) => dispatch({
+            type: "ADDPLAYERNAME",
+            payload: playerName
+        }),
+        addStartingEquipment: (startingEquipment) => dispatch({
+            type: "ADDSTARTINGEQUIPMENT",
+            payload: startingEquipment
+        })
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(NewGame);

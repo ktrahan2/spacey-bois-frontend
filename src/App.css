@@ -1,40 +1,10 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hud-header {
+  height: 150px;
 }
 
 .starting-menu {
@@ -45,3 +15,109 @@
   align-items: center;
 }
 
+.player-hud {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.current-episode {
+  width: 100%;
+  text-align: center;
+}
+
+.hud-body {
+  display: flex;
+  width: 100%;
+}
+
+.player {
+  display: flex;
+  flex-flow: column wrap;
+  width: 25%;
+  align-items: center;
+}
+
+.player-bio {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.label {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+}
+
+.label > h2 {
+  width: 100%;
+}
+
+.label > p {
+  width: 45%;
+}
+
+.player-harm {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+
+}
+
+.prompt {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.prompt-header {
+  display: flex;
+  width: 100%;
+  height: 10%;
+}
+
+.prompt-text {
+  display: flex;
+  justify-content: space-around;
+  height: 45%;
+  width: 100%;
+}
+
+.prompt-options {
+  display: flex;
+  flex-flow: row wrap;
+  height: 45%;
+  width: 100%;
+  justify-content: space-evenly;
+
+}
+
+.prompt-option {
+  width: 50%;
+  text-align: center;
+}
+
+.button {
+  
+}
+
+.inventory {
+  display: flex;
+  flex-flow: column wrap;
+  width: 25%;
+  align-items: center;
+}
+
+.invetory-items {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  align-items: flex-start;
+
+}

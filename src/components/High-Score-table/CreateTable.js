@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import HighScoresTable from './HighScoresTable'
-
 export default class CreateTable extends Component {
 
     state = {
@@ -13,7 +12,6 @@ export default class CreateTable extends Component {
         .then(response => response.json())
         .then(highscores => this.setState({highscores}))
     }
-
 
     render() {
         return (

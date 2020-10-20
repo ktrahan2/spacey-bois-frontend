@@ -4,10 +4,48 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import {createStore, combineReducers} from 'redux'
+import {Provider} from 'react-redux'
+
+const reducer = combineReducers({
+  addPlayerName, 
+  addClass, 
+  addStartingEquipment
+})
+const store = createStore(reducer)
+
+function addStartingEquipment(state=[], action) {
+  switch(action.type){
+    case "ADDSTARTINGEQUIPMENT":
+      return action.payload
+    default:
+      return ["Blaster"]
+  }
+}
+
+function addPlayerName(state="", action) {
+  switch(action.type) {
+    case "ADDPLAYERNAME":
+      return action.payload
+    default:
+      return "ktrain96"
+  }
+}
+
+function addClass(state="", action) {
+  switch(action.type) {
+    case "ADDCLASS":
+      return action.payload
+    default:
+      return "Pilot"
+  }
+}
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Provider store={store}> 
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );
