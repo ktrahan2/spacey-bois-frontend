@@ -2,22 +2,53 @@
     "prompts": [
         {
             "promptNumber": 1,
-            "promptTitle": "Episode 1: Enter the Nautilus",
+            "promptEpisode": "Episode 1: Enter the Nautilus",
+            "promptTitle": "Welcome to the Nautilus",
             "promptText": "Welcome to the Nautilus kid, the name is Nines and I'll be your pilot. We are a bit short on time so you'll meet the rest of the crew later. We need to make this delivery quick fast and in a hurry. We are smuggling a scientist by the name of GreeGree to the Iota Sector. He needs it kept quiet so we need to get through the Jump Gate station without any hiccups, ya hear? Pick which part of the ship you want to be in for the journey.",
             "promptOptions": [
-                {"option1": 
-                    "Engine Room"
+                {"value": "Engine Room",
+                    "nextPrompt": 2
                 },
-                {"option2": 
-                    "Helm"   
+                {"value": "Helm",
+                    "nextPrompt": 3   
                 },
-                {"option3": 
-                    "Cargo Bay"
+                {"value": "Cargo Bay",
+                    "nextPrompt": 4
                 },
-                {"option4": 
-                    "Crew Lounge"
+                {"value": "Crew Lounge",
+                    "nextPrompt": 5
+                }
+            ]
+        },
+        {
+            "promptNumber": 2,
+            "promptEpisode": "Episode 1: Enter the Nautilus",
+            "promptTitle": "Engine Room",
+            "promptText": "You get down to the engine room and see a man meditating in the door way. His eyes open when you draw near, and a kind smile comes across his face. He says 'Ah you must be the new guy I've been hearing about'. I'm Master Gedi Chobani, the ships mystic. The captain sent me down here to keep an eye on the engine room while we try to pass through the Jump Gate. You're welcome to join me if you'd like.",
+            "promptOptions": [
+                {"value": "Join the Gedi Master",
+                    "nextPrompt": 6
+                },
+                {"value": "Look busy in the engine room",
+                    "nextPrompt": 7   
+                }
+            ]
+        },
+        {
+            "promptNumber": 6,
+            "promptEpisode": "Episode 1: Enter the Nautilus",
+            "promptTitle": "Join the meditation",
+            "promptText": "You take a seat on the ground next to the Gedi Master and find it easy to slip into a meditative state in his presence.\n Stirred awake by a sudden noise, you hear a voice come over the intercoms. 'This is Nines, they aren't going to let us through the checkout point without checking the ship. Prepare to be boarded'",
+            "promptOptions": [
+                {"value": "Join the Gedi Master",
+                    "nextPrompt": 6
+                },
+                {"value": "Look busy in the engine room",
+                    "nextPrompt": 7   
                 }
             ]
         }
+
+        
     ]
 }
