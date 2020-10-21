@@ -3,7 +3,7 @@
     "classes": [   
         {
             "classTitle": "Mystic",
-            "description": "Your ability to use the way sets you apart from all the rest. You can move objects with your mind and use a psyblade",
+            "description": "Your ability to use the way sets you apart from all the rest. You can move objects with your mind and use a psyblade.",
             "specialAbilities": [
                 {"Kinetics": 
                     "You can push yourself to throw a table-sized object or propel yourself with super speed."

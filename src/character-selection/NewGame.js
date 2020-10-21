@@ -30,10 +30,10 @@ function NewGame(props) {
         return ClassList.classes.map((character, index) => {
             
             let classTitle = character.classTitle
-            let currentClass = props.class
+            let currentClassSelected = props.class
             
-            if (currentClass &&
-                classTitle === currentClass) {
+            if (currentClassSelected &&
+                classTitle === currentClassSelected) {
                 return (
                     <section key={index}>
                         <h2>{character.classTitle}</h2>
@@ -50,30 +50,35 @@ function NewGame(props) {
     return (
         <div className="create-character-body">
             <header className="create-character-header">
-                <Link  to="/">Home Menu</Link>
+                <Link  className="link" to="/">Home Menu</Link>
             </header>
             <main className="create-character-main">
-                <form>
-                    <div className="choose-player-name">
-                        <p>Choose your characters name:</p>
-                        <input 
-                            onChange={setPlayerName} 
-                            name="playername" 
-                            placeholder="Enter Player Name" 
-                        >
-                        </input>
+                <div className="creation-middle">
+                    <div className="player-input">
+                        <div className="choose-player-name">
+                            <p>Choose your characters name:</p>
+                            <input 
+                                className="player-name-input"
+                                onChange={setPlayerName} 
+                                name="playername" 
+                                placeholder="Enter Player Name" 
+                            >
+                            </input>
+                        </div>
+                        <div className="choose-class">
+                            <p>Choose a class:</p>
+                            <select className="choose-class-selector" onChange={selectedClass}>
+                                <CharacterClassOptions/>
+                            </select>
+                        </div>
                     </div>
-                    <div className="choose-class">
-                        <p>Choose a class:</p>
-                        <select onChange={selectedClass}>
-                            <CharacterClassOptions/>
-                        </select>
+                    <div className="class-information">
+                        {renderClassDescription()}
                     </div>
-                    <Link onClick={handleClick} to="/hud">Start Game</Link>
-                </form>
-                <div>
-                    {renderClassDescription()}
                 </div>
+                <div className="start-game">
+                    <Link className="link" onClick={handleClick} to="/hud">Start Game</Link>
+                </div>    
             </main>
         </div>
     )
