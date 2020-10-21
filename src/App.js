@@ -5,6 +5,8 @@ import Home from './components/Home/Home'
 import CreateTable from './components/High-Score-table/CreateTable'
 import NewGame from "./character-selection/NewGame"
 import MainHUD from "./HUD/Main"
+import Warp from "./transitions/Warp"
+import EnterTheNautilus from './transitions/EnterTheNautilus';
 
 
 export default function App(){
@@ -20,6 +22,8 @@ export default function App(){
         <Route path="/highscores" component={CreateTable}/>
         <Route path="/newgame" component={NewGame}/> 
         <Route path="/hud" component={MainHUD}/>
+        <Route path="/warp" component={Warp}/>
+        <Route path="/enter-the-nautilus" component={EnterTheNautilus}/>
         </Switch>
       </main>
       <footer>

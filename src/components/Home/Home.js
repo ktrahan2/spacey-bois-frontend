@@ -7,7 +7,7 @@ export default function Home() {
         <section className="starting-menu">
             <div className="menu-placement">
                 <div className="menu-options">
-                    <Link className="link" to="/newgame">Start New Game</Link>
+                    <Link className="link" to="/warp">Start New Game</Link>
                     <Link className="link" to="/highscores">High Scores</Link>
                 </div>
             </div>

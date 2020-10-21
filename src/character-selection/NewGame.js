@@ -50,13 +50,13 @@ function NewGame(props) {
     return (
         <div className="create-character-body">
             <header className="create-character-header">
-                <Link  className="link" to="/">Home Menu</Link>
+                <Link  className="link" to="/">Main Menu</Link>
             </header>
             <main className="create-character-main">
                 <div className="creation-middle">
                     <div className="player-input">
                         <div className="choose-player-name">
-                            <p>Choose your characters name:</p>
+                            <p>Choose your characters' name:</p>
                             <input 
                                 className="player-name-input"
                                 onChange={setPlayerName} 
@@ -77,7 +77,7 @@ function NewGame(props) {
                     </div>
                 </div>
                 <div className="start-game">
-                    <Link className="link" onClick={handleClick} to="/hud">Start Game</Link>
+                    <Link className="link" onClick={handleClick} to="/enter-the-nautilus">Start Game</Link>
                 </div>    
             </main>
         </div>
