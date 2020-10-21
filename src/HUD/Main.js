@@ -37,9 +37,14 @@ class Main extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        console.log(prevState)
         if (prevState.optionType !== "attack" && this.state.optionType === "attack") {
             this.determineDamage()
         }
+    }
+
+    showCurrentHarm = () => {
+
     }
     
     determineDamage = () => {
@@ -94,6 +99,7 @@ class Main extends Component {
                                 increaseScore={this.increaseScore}
                                 setOptionType={this.setOptionType}
                                 currentHarm={this.state.currentHarm}
+                                showCurrentHarm={this.state.currentHarm}
                                 />
                         </section>
                         <section className="inventory">

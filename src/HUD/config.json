@@ -7,16 +7,20 @@
             "promptText": "Welcome to the Nautilus kid, the name is Nines and I'll be your pilot. We are a bit short on time so you'll meet the rest of the crew later.\n We need to make this delivery quick fast and in a hurry. We are smuggling a scientist by the name of GreeGree to the Iota Sector. He needs it kept quiet so we need to get through the Jump Gate station without any hiccups, ya hear?\n Pick which part of the ship you want to be in for the journey.",
             "promptOptions": [
                 {"value": "Engine Room",
-                    "nextPrompt": 2
+                    "nextPrompt": 2,
+                    "type": "default"
                 },
                 {"value": "Helm",
-                    "nextPrompt": 3   
+                    "nextPrompt": 3,
+                    "type": "default"   
                 },
                 {"value": "Cargo Bay",
-                    "nextPrompt": 4
+                    "nextPrompt": 4,
+                    "type": "default"
                 },
                 {"value": "Crew Lounge",
-                    "nextPrompt": 5
+                    "nextPrompt": 5,
+                    "type": "default"
                 }
             ]
         },
@@ -27,10 +31,12 @@
             "promptText": "You get down to the engine room and see a man meditating in the door way. His eyes open when you draw near, and a kind smile comes across his face.\n He says 'Ah you must be the new guy I've been hearing about'. I'm Master Gedi Chobani, the ships mystic. The captain sent me down here to keep an eye on the engine room while we try to pass through the Jump Gate.\n You're welcome to join me if you'd like.",
             "promptOptions": [
                 {"value": "Join the Gedi Master",
-                    "nextPrompt": 6
+                    "nextPrompt": 6,
+                    "type": "default"
                 },
                 {"value": "Look busy in the engine room",
-                    "nextPrompt": 7   
+                    "nextPrompt": 7,
+                    "type": "default"   
                 }
             ]
         },
@@ -41,10 +47,12 @@
             "promptText": "You take a seat on the ground next to the Gedi Master and find it easy to slip into a meditative state in his presence.\n Stirred awake by a sudden noise, you hear a voice come over the intercoms. 'This is Nines, they aren't going to let us through the checkout point without checking the ship. Prepare to be boarded'.\n The Gedi tells you to relax and continue to meditate.",
             "promptOptions": [
                 {"value": "Continue to meditate",
-                    "nextPrompt": 8
+                    "nextPrompt": 8,
+                    "type": "default"
                 },
                 {"value": "Look busy in the engine room",
-                    "nextPrompt": 9  
+                    "nextPrompt": 9,
+                    "type": "default"  
                 }
             ]
         },
@@ -55,10 +63,12 @@
             "promptText": "You begin to do work around the engine room when you hear the intercoms engage.\n 'This is Nines, they aren't going to let us through the checkout point without checking the ship. Everyone relax and continue doing what you're doing. Prepare to be boarded.'",
             "promptOptions": [
                 {"value": "Continue to look busy",
-                    "nextPrompt": 9
+                    "nextPrompt": 9,
+                    "type": "default"
                 },
                 {"value": "Join the Gedi in meditation",
-                    "nextPrompt": 8  
+                    "nextPrompt": 8,
+                    "type": "default"  
                 }
             ]
         },
@@ -73,7 +83,8 @@
                     "type": "attack"
                 },
                 {"value": "Hope the ruse holds",
-                    "nextPrompt": 11 
+                    "nextPrompt": 11,
+                    "type": "default" 
                 }
             ]
         },
@@ -99,10 +110,12 @@
             "promptText": "From down the hall you can hear footsteps approaching. You continue meditating as you hear them stop just shy of the engine room door. You can hear Nines and an unfamiliar voice.\n Nines: 'Look I would love to keep showing you boys around but as you can see our Gedi and his apprentice have picked the engine room to meditate and I would hate to interrupt them.\n Guard: With hesitation in his voice, 'Look I don't want to be a pain but regulations are regulations.\n Vapor: 'Oh boy, this is going to be good.\n",
             "promptOptions": [
                 {"value": "Stop the ruse and attack the guards",
-                    "nextPrompt": 10
+                    "nextPrompt": 10,
+                    "type": "attack"
                 },
                 {"value": "Hope the ruse holds",
-                    "nextPrompt": 11 
+                    "nextPrompt": 11,
+                    "type": "default" 
                 }
             ]
         },
@@ -113,10 +126,12 @@
             "promptText": "From down the hall you can hear footsteps approaching. You continue meditating as you hear them stop just shy of the engine room door. You can hear Nines and an unfamiliar voice.\n Nines: 'Look I would love to keep showing you boys around but as you can see our Gedi and his apprentice have picked the engine room to meditate and I would hate to interrupt them.\n Guard: With hesitation in his voice, 'Look I don't want to be a pain but regulations are regulations.\n Vapor: 'Oh boy, this is going to be good.\n",
             "promptOptions": [
                 {"value": "Stop the ruse and attack the guards",
-                    "nextPrompt": 10
+                    "nextPrompt": 10,
+                    "type": "attack"
                 },
                 {"value": "Hope the ruse holds",
-                    "nextPrompt": 11 
+                    "nextPrompt": 11,
+                    "type": "default" 
                 }
             ]
         }

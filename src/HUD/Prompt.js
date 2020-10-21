@@ -17,13 +17,12 @@ export default function Prompt({
     let handleClick = (event, option) => {
         setPromptNumber(event.target.id)
         increaseScore(currentScore)
-        if (option.type == "attack") {
-            setOptionType(option.type)
-        }
+        setOptionType(option.type)
+        
     }
 
     let selectedPromptText = selectedPrompt.promptText.split("\n")
-    
+
     selectedPromptText = selectedPromptText.map((text, index) => {
         return (
                 <p 
