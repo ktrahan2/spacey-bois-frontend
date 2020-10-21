@@ -2,6 +2,44 @@
   box-sizing: border-box;
 }
 
+.starting-menu {
+  background-image: url('https://i.imgur.com/rBc4zVm.jpg');
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menu-options {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  border-bottom: 15px solid rgba(107, 80, 225, 0.687);
+  border-left: 10px solid rgba(107, 80, 225, 0.687);
+  border-top: 12px solid silver;
+  border-right: 8px solid silver;
+  border-style: groove solid;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.399);
+  height: 200px;
+  width: 400px;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 120px;
+  right: 100px;
+}
+
+.link {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.link:hover {
+  transform: scale(1.5);
+  text-shadow: 5px 5px  rgba(93, 69, 201, 0.742);
+}
 
 .hud-header {
   height: 150px;
@@ -65,7 +103,14 @@
   width: 100%;
   align-items: center;
   text-align: center;
+}
 
+.player-harm-child {
+  width: 85%;
+}
+
+progress {
+  width: 100%;
 }
 
 .prompt {
@@ -82,17 +127,24 @@
   height: 10%;
 }
 
+.prompt-texts {
+  display: flex;
+  justify-content: space-around;
+  height: 65%;
+  width: 100%;
+}
+
 .prompt-text {
   display: flex;
   justify-content: space-around;
-  height: 45%;
+  height: fit-content;
   width: 100%;
 }
 
 .prompt-options {
   display: flex;
   flex-flow: row wrap;
-  height: 45%;
+  height: 25%;
   width: 100%;
   justify-content: space-evenly;
 
@@ -104,7 +156,7 @@
 }
 
 .button {
-  
+
 }
 
 .inventory {

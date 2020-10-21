@@ -2,6 +2,26 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 function PlayerInformation(props) {
+    
+    const showLevelOneHarm = () => {
+        return <progress 
+                    className="health-bar" 
+                    value={props.currentHarm.levelOne} 
+                    max="3"
+                >
+                </progress>        
+    }
+
+    const showLevelTwoHarm = () => {
+        return <progress 
+                    className="health-bar" 
+                    value={props.currentHarm.levelTwo} 
+                    max="3"
+                >
+                </progress>        
+
+    }
+    
     return (
         <div>
             <div className="player-bio">
@@ -12,9 +32,8 @@ function PlayerInformation(props) {
             </div>
             <div className="player-harm">
                 <h2>Current Harm</h2>
-                <h3>Level 1</h3>
-                <h3>Level 2</h3>
-                <h3>Level 3</h3>
+                <h3 className="player-harm-child">Level 1 {showLevelOneHarm()}</h3>
+                <h3 className="player-harm-child">Level 2 {showLevelTwoHarm()}</h3>
             </div>
         </div>
     )

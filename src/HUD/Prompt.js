@@ -1,5 +1,5 @@
 import React from 'react'
-import PromptsList from './config.json'
+import Prompts from './Config'
 
 export default function Prompt({
         promptNumber, 
@@ -7,10 +7,10 @@ export default function Prompt({
         currentScore, 
         increaseScore, 
         setOptionType, 
-        currentHarm
+        resetDiceResult
     }) {
-
-    let selectedPrompt = PromptsList.prompts.find(prompt => {
+        
+    let selectedPrompt = Prompts().find(prompt => {
         return prompt.promptNumber == promptNumber
     })
 
@@ -18,7 +18,7 @@ export default function Prompt({
         setPromptNumber(event.target.id)
         increaseScore(currentScore)
         setOptionType(option.type)
-        
+        resetDiceResult()
     }
 
     let selectedPromptText = selectedPrompt.promptText.split("\n")
@@ -50,14 +50,14 @@ export default function Prompt({
             </div>
         )
     })
-    
+
     return (
         <>
             <div className='prompt-header'>
                 <h1 className="current-episode">{selectedPrompt.promptEpisode}</h1>
             </div>
             <div className="prompt-texts">
-                <p>{selectedPromptText}</p>
+                <div>{selectedPromptText}</div>
             </div>
             <div className="prompt-options">
                 {selectedPromptOptions}
