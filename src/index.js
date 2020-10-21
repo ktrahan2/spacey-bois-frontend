@@ -39,7 +39,7 @@ function addClass(state="", action) {
     case "ADDCLASS":
       return action.payload
     default:
-      return "Pilot"
+      return "Mystic"
   }
 }
 

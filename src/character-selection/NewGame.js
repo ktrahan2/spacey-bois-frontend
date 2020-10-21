@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ClassList from "./config.json"
 import {connect} from 'react-redux'
-
+import CharacterEquipment from './CharacterEquipment'
+import CharacterClassOptions from './CharacterClassOptions'
 
 function NewGame(props) {
 
@@ -25,20 +26,20 @@ function NewGame(props) {
         props.addClass(event.target.value)
     } 
     
-
     const renderClassDescription = () => {
-        return ClassList.classes.map(character => {
-            if (props.class &&
-                character.classTitle === props.class) {
+        return ClassList.classes.map((character, index) => {
+            
+            let classTitle = character.classTitle
+            let currentClass = props.class
+            
+            if (currentClass &&
+                classTitle === currentClass) {
                 return (
-                    <section key={character.id}>
+                    <section key={index}>
                         <h2>{character.classTitle}</h2>
                         <p>{character.description}</p>
-                        {/* add to this div to component that will check all starting equipment and then make the h4 */}
                         <div className="starting-equipment">
-                            <h3>Starting Equipment</h3>
-                            <h4>{character.startingEquipment[0]}</h4>
-                            <h4>{character.startingEquipment[1]}</h4>
+                            <CharacterEquipment character={character}/>
                         </div>
                     </section>
                 )
@@ -47,11 +48,11 @@ function NewGame(props) {
     }
 
     return (
-        <div>
-            <header>
-                <Link to="/">Home Menu</Link>
+        <div className="create-character-body">
+            <header className="create-character-header">
+                <Link  to="/">Home Menu</Link>
             </header>
-            <main>
+            <main className="create-character-main">
                 <form>
                     <div className="choose-player-name">
                         <p>Choose your characters name:</p>
@@ -65,13 +66,7 @@ function NewGame(props) {
                     <div className="choose-class">
                         <p>Choose a class:</p>
                         <select onChange={selectedClass}>
-                            <option value="Mystic">Msytic</option>
-                            <option value="Pilot">Pilot</option>
-                            <option value="Scoundrel">Scoundrel</option>
-                            <option value="Mechanic">Mechanic</option>
-                            <option value="Muscle">Muscle</option>
-                            <option value="Speaker">Speaker</option>
-                            <option value="Stitch">Stitch</option>
+                            <CharacterClassOptions/>
                         </select>
                     </div>
                     <Link onClick={handleClick} to="/hud">Start Game</Link>
