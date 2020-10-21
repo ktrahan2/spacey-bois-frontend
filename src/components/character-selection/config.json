@@ -26,7 +26,7 @@
         },
         {
             "classTitle": "Scoundrel",
-            "description": "Neither the most reputable nor the one to choose the safe route, you're a smooth-talking criminal and luck is just one of your many skills. Skulk your way through missions or choose to be a smooth takler.",
+            "description": "Neither the most reputable nor the one to choose the safe route, you're a smooth-talking criminal and luck is just one of your many skills.",
             "specialAbilities": [],
             "startingEquipment": ["Blaster", "Forged Documents"],
             "img_url": ""

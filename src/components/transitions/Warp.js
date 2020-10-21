@@ -5,7 +5,7 @@ export default class Warp extends Component {
     componentDidMount() {
     setTimeout(() => {
       this.props.history.push('/newgame')
-    }, 4000) 
+    }, 3000) 
     }
 
     render() {

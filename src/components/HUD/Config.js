@@ -1,4 +1,4 @@
-import { store } from '../index'
+import { store } from '../../index'
 
 export default function getPrompts() {
 
@@ -121,13 +121,13 @@ export default function getPrompts() {
             promptNumber: 8,
             promptEpisode: "Episode 1: Enter the Nautilus",
             promptTitle: "meditating upon guard arrival",
-            promptText: "From down the hall you hear footsteps approaching. You continue meditating as you hear them stop just shy of the engine room door. You can hear Nines and an unfamiliar voice.\n Nines: 'Look I would love to keep showing you boys around but as you can see our Gedi and his apprentice have picked the engine room to meditate and I would hate to interrupt them.\n Inspector: With hesitation in his voice, 'Look I don't want to be a pain but regulations are regulations.\n Vapor: 'Oh boy, this is going to be good.\n",
+            promptText: "From down the hall you hear footsteps approaching. They stop just shy of the engine room door. You can hear Nines and an unfamiliar voice.\n Nines: 'Look I would love to keep showing you boys around but as you can see our Gedi and his apprentice have picked the engine room to meditate and I would hate to interrupt them.\n Inspector: With hesitation in his voice, 'Look I don't want to be a pain but regulations are regulations.\n Vapor: 'Oh boy, this is going to be good.\n",
             promptOptions: [
                 {value: `Pull out your ${playerWeapon}, and attack the inspectors`,
                     nextPrompt: 10,
                     type: "attack"
                 },
-                {value: "Hope the ruse holds",
+                {value: "Maintain the ruse",
                     nextPrompt: 11,
                     type: "default" 
                 }

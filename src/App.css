@@ -46,14 +46,7 @@
   justify-content: space-around;
   align-items: center;
   margin: 0 70px 0 0;
-  /* position: absolute;
-  top: 120px;
-  right: 100px; */
 }
-
-/* .create-character-body {
-  background-color:
-} */
 
 .create-character-body {
   background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2b718ecb-3a11-4472-b77c-4a68e53d8d54/d7fi7rw-069c1bef-c038-4a2e-93b1-7a76b53b522a.jpg/v1/fill/w_1024,h_576,q_75,strp/mundus_novus__the_bridge_by_xelfrepuslax_d7fi7rw-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01NzYiLCJwYXRoIjoiXC9mXC8yYjcxOGVjYi0zYTExLTQ0NzItYjc3Yy00YTY4ZTUzZDhkNTRcL2Q3Zmk3cnctMDY5YzFiZWYtYzAzOC00YTJlLTkzYjEtN2E3NmI1M2I1MjJhLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.9IxDxzbjPBhlFf_YGi7MipbtMwt6r3nzznYRPaIppR0');
@@ -90,33 +83,39 @@
 }
 
 .choose-player-name {
-  width: 300px;
+  width: 400px;
   height: 120px;
   background-color: rgba(0, 0, 0, 0.269);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .player-name-input {
-  background-color: rgba(0, 0, 0, 0.269);
+  background-color: rgba(0, 0, 0, 0.351);
   color: white;
   height: 30px;
+  font-size: 20px;
+}
+
+::placeholder {
+  color: white;
 }
 
 .choose-class{
-  width: 300px;
-  height: 120px;
+  width: 400px;
+  height: fit-content;
   background-color: rgba(0, 0, 0, 0.269);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .choose-class-selector {
   background-color: rgba(0, 0, 0, 0.269);
   color: white;
   height: 30px;
+  font-size: 20px;
 }
 
 .class-information {
@@ -135,6 +134,7 @@
 .start-game {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   width: 100%;
   height: 100px;
 }

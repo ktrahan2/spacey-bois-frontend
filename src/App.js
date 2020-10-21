@@ -3,10 +3,10 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home'
 import CreateTable from './components/High-Score-table/CreateTable'
-import NewGame from "./character-selection/NewGame"
-import MainHUD from "./HUD/Main"
-import Warp from "./transitions/Warp"
-import EnterTheNautilus from './transitions/EnterTheNautilus';
+import NewGame from "./components/character-selection/NewGame"
+import MainHUD from "./components/HUD/Main"
+import Warp from "./components/transitions/Warp"
+import EnterTheNautilus from './components/transitions/EnterTheNautilus';
 
 
 export default function App(){
