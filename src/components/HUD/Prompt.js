@@ -9,6 +9,7 @@ export default function Prompt({
         increaseScore, 
         setOptionType, 
         resetDiceResult,
+        sendHighScore
     }) {
         
     let history = useHistory()
@@ -25,6 +26,8 @@ export default function Prompt({
             resetDiceResult()
         }
         else {
+            console.log("sending from handleclick")
+            sendHighScore()
             history.push('/credits')
         }
     }

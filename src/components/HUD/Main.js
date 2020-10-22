@@ -7,13 +7,27 @@ import Prompt from './Prompt'
 class Main extends Component {
 
     state = {
-        promptNumber: 11,
+        promptNumber: 17,
         score: 0,
         optionType: "",
         currentHarm: {
             levelOne: 0,
             levelTwo: 0
         }
+    }
+
+    sendHighScore = () => {
+        fetch('http://localhost:7000/addscores', {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                    username: this.props.playerName,
+                    score: this.state.score
+            })
+        }).then(response => response.json())
+            .then(console.log)
     }
 
     setPromptNumber = (promptNumber) => {
@@ -112,6 +126,7 @@ class Main extends Component {
                                 increaseScore={this.increaseScore}
                                 setOptionType={this.setOptionType}
                                 resetDiceResult={this.resetDiceResult}
+                                sendHighScore={this.sendHighScore}
                             />
                         </section>
                         <section className="inventory">

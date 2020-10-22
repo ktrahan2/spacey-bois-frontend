@@ -15,11 +15,12 @@ export default class CreateTable extends Component {
 
     render() {
         return (
-            <div>
-                <header>
-                    <Link to="/">Home Menu</Link>
+            <div className="high-score-menu">
+                <header className="high-score-table-header">
+                    <Link className="link" to="/">Home Menu</Link>
                 </header>
                 <main className="high-score-table-container">
+                    <h1 id="leader-board-header">Spacey Bois Leader Board</h1>
                     <HighScoresTable highscores={this.state.highscores}/>
                 </main>
             </div>

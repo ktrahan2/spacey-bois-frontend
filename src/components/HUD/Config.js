@@ -92,14 +92,14 @@ export default function getPrompts() {
             promptNumber: 1,
             promptEpisode: "Episode 1: Enter the Nautilus",
             promptTitle: "Welcome to the Nautilus",
-            promptText: `Welcome to the Nautilus ${playerName}, the name is Nines and I'll be your pilot. We are a bit short on time so you'll meet the rest of the crew later.\n We need to make this delivery quick fast and in a hurry. We are smuggling a scientist by the name of GreeGree to the Iota Sector. He needs it kept quiet so we need to get through the Jump Gate station without any hiccups, ya hear?\n Pick which part of the ship you want to be in for the journey.`,
+            promptText: `Welcome to the Nautilus ${playerName}, the name is Nines and I'll be your pilot. We are a bit short on time so you'll meet the rest of the crew later.\n We need to make this delivery quick fast and in a hurry. We are smuggling a scientist by the name of GreeGree to the Iota Sector. He needs it kept quiet so we need to get through the Jump Gate station without any hiccups, ya hear?\n Head down to the engine room to help out Chobani.`,
             promptOptions: [
                 {value: "Engine Room",
                     nextPrompt: 2,
                     type: "default"
                 },
+                
                 //future potential starter options
-
                 // {value: "Helm",
                 //     nextPrompt: 3,
                 //     type: "default"   
@@ -300,14 +300,12 @@ export default function getPrompts() {
                 },
             ]
         },
-        //make this one transition to main menu and trigger sending highscore/username to database
         { 
             promptNumber: 18,
             promptEpisode: "Episode 1: Enter the Nautilus",
             promptTitle: "buckle up",
             promptText: `You feel The Nautilus violently disconnect from the shuttle. Pitching hard to the right, causing you to smack directly into the corridor wall.\n As the ship begins to invert you feel someone grab a hold of your arm. Vapor pulls you into the chair next to him and you buckle up.\n The ship starts to shake from incoming fire, you feel your body being thrown in different directions as Nines tries to out manuever the Malklaiths ships.\n Suddenly as if it never happened the shaking stops, and you see clear space outside the windows.\n You hear the intercom: 'Pheeew, we made it everyone. I have no idea where the f*ck we are, but its better than being dead. Lets meet in the Crew Lounge to debrief.'`,            
             promptOptions: [
-                //when click button send to credit sreens and send score.
                 {value: "Go to Crew Lounge",
                     nextPrompt: 19,
                     type: "default"
@@ -318,7 +316,7 @@ export default function getPrompts() {
             promptNumber: 19,
             promptEpisode: "Episode 1: Enter the Nautilus",
             promptTitle: "smooth sailing",
-            promptText: `Good Work everyone`,            
+            promptText: `Nines: Fantastic work everyone, looks like we have an amazing addition to our crew. Glad to have you, ${playerName}. Someone let the scientist out of the hidden compartment so he can let us know where we are heading to next.'\n Vapor: 'I'll get him out, I want to know why he's so important we had to go through all this trouble.'\n Nines: 'On second thought, Grips why don't you take ${playerName} down to get GreeGree.'\n Grip:'Sure thing, come with me. I'll show you how the compartment works'.`,            
             promptOptions: [
                 {value: "Fin",
                     nextPrompt: 21,

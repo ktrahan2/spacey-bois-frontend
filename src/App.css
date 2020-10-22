@@ -276,10 +276,6 @@ progress {
   text-align: center;
 }
 
-/* .button {
-
-} */
-
 .inventory {
   display: flex;
   flex-flow: column wrap;
@@ -293,3 +289,33 @@ progress {
   width: 100%;
   align-items: flex-start;
 }
+
+.high-score-menu {
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a60b142f-6096-4738-8703-06c3cef042f9/d4m2ldq-0a9b64fa-64ed-4752-a0fb-34bdb0615b72.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYTYwYjE0MmYtNjA5Ni00NzM4LTg3MDMtMDZjM2NlZjA0MmY5XC9kNG0ybGRxLTBhOWI2NGZhLTY0ZWQtNDc1Mi1hMGZiLTM0YmRiMDYxNWI3Mi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.nEHXRTtZPdwVVr835x4pRp88B10h66KLGrHJ7a-gVkU');
+  color: white;
+  background-size: cover;
+}
+
+.high-score-table-header {
+  display: flex;
+  height: 100px;
+  justify-content: flex-end;
+  padding: 20px 50px;
+}
+
+.high-score-table-container {
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 25px;
+}
+
+#leader-board-header {
+  text-decoration: underline;
+}
+
+

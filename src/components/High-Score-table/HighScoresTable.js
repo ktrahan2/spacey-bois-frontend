@@ -6,14 +6,15 @@ export default function HighScores({highscores}) {
     highscores = highscores.sort((a,b) => b.score - a.score).slice(0, 10)
     
     let createHighScoreRow = highscores.map((highscore, index) => {
-        
-        return (
-            <HighScoreRow 
-                key={index} 
-                highscore={highscore}
-                index={index}
-            />
-        )
+        if (highscore.username !== "" && highscore.score !== 0) {
+            return (
+                <HighScoreRow 
+                    key={index} 
+                    highscore={highscore}
+                    index={index}
+                />
+            )
+        }
 
     })
     
