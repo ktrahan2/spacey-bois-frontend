@@ -46,10 +46,10 @@
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-  border-bottom: 15px solid rgba(107, 80, 225, 0.687);
-  border-left: 10px solid rgba(107, 80, 225, 0.687);
-  border-top: 12px solid silver;
-  border-right: 8px solid silver;
+  border-bottom: 15px solid rgba(107, 80, 225, 0.488);
+  border-left: 10px solid rgba(107, 80, 225, 0.482);
+  border-top: 12px solid rgba(192, 192, 192, 0.66);
+  border-right: 8px solid gba(192, 192, 192, 0.66);
   border-style: groove;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.399);
@@ -187,12 +187,21 @@
 .hud-body {
   display: flex;
   width: 100%;
+  height: 100vh;
+  justify-content: center;
+}
+
+.hud {
+  background-image: url('https://i.imgur.com/7Lh16BM.jpg');
+  background-size: cover;
+  height: 100vh;
+  color: white;
 }
 
 .player {
   display: flex;
   flex-flow: column wrap;
-  width: 25%;
+  width: 35%;
   align-items: center;
 }
 
@@ -202,6 +211,14 @@
   width: 100%;
   align-items: center;
   text-align: center;
+  background-color: rgba(28, 74, 130, 0.413);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: silver 8px groove;
+  border-radius: 50px;
+  padding: 5px;
+  margin: 10px;
+  font-size: 20px;
 }
 
 .label {
@@ -224,6 +241,15 @@
   width: 100%;
   align-items: center;
   text-align: center;
+  background-color: rgba(28, 74, 130, 0.413);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: silver 8px groove;
+  border-radius: 50px;
+  padding: 5px;
+  margin: 10px;
+  font-size: 20px;
+
 }
 
 .player-harm-child {
@@ -237,9 +263,18 @@ progress {
 .prompt {
   display: flex;
   flex-flow: column wrap;
-  width: 100%;
+  width: 100vw;
   justify-content: flex-start;
   align-items: center;
+  background-color: rgba(28, 74, 130, 0.413);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: silver 8px groove;
+  border-radius: 50px;
+  padding: 5px;
+  margin: 10px;
+  font-size: 25px;
+  height: 100vh;
 }
 
 .prompt-header {
@@ -251,8 +286,8 @@ progress {
 .prompt-texts {
   display: flex;
   justify-content: space-around;
-  height: 65%;
   width: 100%;
+  height: fit-content;
 }
 
 .prompt-text {
@@ -260,20 +295,30 @@ progress {
   justify-content: space-around;
   height: fit-content;
   width: 100%;
+  padding: 10px;
 }
 
 .prompt-options {
   display: flex;
   flex-flow: row wrap;
-  height: 25%;
+  height: fit-content;
   width: 100%;
   justify-content: space-evenly;
-
+  
 }
 
 .prompt-option {
   width: 50%;
   text-align: center;
+  height: fit-content;
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0.345);
+  color: white;
+  font-size: 25px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .inventory {
@@ -281,6 +326,16 @@ progress {
   flex-flow: column wrap;
   width: 25%;
   align-items: center;
+  background-color: rgba(28, 74, 130, 0.413);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: silver 8px groove;
+  border-radius: 50px;
+  padding: 5px;
+  margin: 10px;
+  height: fit-content;
+  font-size: 20px;
+
 }
 
 .invetory-items {

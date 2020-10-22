@@ -7,7 +7,7 @@ import Prompt from './Prompt'
 class Main extends Component {
 
     state = {
-        promptNumber: 17,
+        promptNumber: 1,
         score: 0,
         optionType: "",
         currentHarm: {
@@ -106,11 +106,7 @@ class Main extends Component {
     render() {
         
         return (
-            <div>
-                <header className="hud-header">
-                    <Link to="/newgame">back to new game</Link>
-                    <Link to="/">Home</Link>
-                </header>
+            <div className="hud">
                 <main className="player-hud">
                     <div className="hud-body">
                         <section className="player">

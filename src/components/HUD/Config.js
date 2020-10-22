@@ -92,7 +92,7 @@ export default function getPrompts() {
             promptNumber: 1,
             promptEpisode: "Episode 1: Enter the Nautilus",
             promptTitle: "Welcome to the Nautilus",
-            promptText: `Welcome to the Nautilus ${playerName}, the name is Nines and I'll be your pilot. We are a bit short on time so you'll meet the rest of the crew later.\n We need to make this delivery quick fast and in a hurry. We are smuggling a scientist by the name of GreeGree to the Iota Sector. He needs it kept quiet so we need to get through the Jump Gate station without any hiccups, ya hear?\n Head down to the engine room to help out Chobani.`,
+            promptText: `Welcome to the Nautilus ${playerName}, the name is Nines and I'll be your pilot. We are a bit short on time so you'll meet the rest of the crew later.\n We need to make this delivery quick fast and in a hurry. We are smuggling a scientist by the name of GreeGree to the Iota Sector. He needs it kept quiet so we need to get through the Jump Gate station without any hiccups, ya hear?\n 'Head down to the engine room to help out Chobani.'`,
             promptOptions: [
                 {value: "Engine Room",
                     nextPrompt: 2,
