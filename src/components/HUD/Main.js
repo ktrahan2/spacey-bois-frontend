@@ -7,7 +7,7 @@ import Prompt from './Prompt'
 class Main extends Component {
 
     state = {
-        promptNumber: 8,
+        promptNumber: 11,
         score: 0,
         optionType: "",
         currentHarm: {

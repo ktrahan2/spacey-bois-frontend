@@ -21,7 +21,7 @@ function addStartingEquipment(state=[], action) {
     case "ADDSTARTINGEQUIPMENT":
       return action.payload
     default:
-      return ["Blaster", "Medkit"]
+      return ["Blaster"]
   }
 }
 
@@ -30,16 +30,16 @@ function addPlayerName(state="", action) {
     case "ADDPLAYERNAME":
       return action.payload
     default:
-      return "ktrain96"
+      return "Iiladin"
   }
 }
 
 function addClass(state="", action) {
   switch(action.type) {
-    case "ADDCLASS":
-      return action.payload
     default:
       return "Mystic"
+    case "ADDCLASS":
+      return action.payload
   }
 }
 

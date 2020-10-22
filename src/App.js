@@ -7,7 +7,7 @@ import NewGame from "./components/character-selection/NewGame"
 import MainHUD from "./components/HUD/Main"
 import Warp from "./components/transitions/Warp"
 import EnterTheNautilus from './components/transitions/EnterTheNautilus';
-
+import FinishEpisodeOne from './components/transitions/FinishEpisodeOne'
 
 export default function App(){
 
@@ -24,6 +24,7 @@ export default function App(){
         <Route path="/hud" component={MainHUD}/>
         <Route path="/warp" component={Warp}/>
         <Route path="/enter-the-nautilus" component={EnterTheNautilus}/>
+        <Route path="/credits" component={FinishEpisodeOne}/>
         </Switch>
       </main>
       <footer>

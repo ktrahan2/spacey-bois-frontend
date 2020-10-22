@@ -5,7 +5,7 @@ export default class EnterTheNautilus extends Component {
     componentDidMount() {
         setTimeout(() => {
           this.props.history.push('/hud')
-        }, 5000) 
+        }, 4000) 
         }
     
         render() {

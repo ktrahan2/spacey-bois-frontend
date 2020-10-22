@@ -13,6 +13,18 @@
   height: 100vh;
 }
 
+.credits {
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a60b142f-6096-4738-8703-06c3cef042f9/d4zjm3y-dd9e760f-5bde-4361-94be-8d993a864c29.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYTYwYjE0MmYtNjA5Ni00NzM4LTg3MDMtMDZjM2NlZjA0MmY5XC9kNHpqbTN5LWRkOWU3NjBmLTViZGUtNDM2MS05NGJlLThkOTkzYTg2NGMyOS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.IaxbDiM23xKxbXg2co_Nn4ewo3UEwflSCHZoaCCQvzo');
+  height: 100vh;
+  background-size: cover;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  font-size: 30px;
+}
+
 .starting-menu {
   background-image: url('https://i.imgur.com/rBc4zVm.jpg');
   height: 100vh;
@@ -264,9 +276,9 @@ progress {
   text-align: center;
 }
 
-.button {
+/* .button {
 
-}
+} */
 
 .inventory {
   display: flex;
@@ -280,5 +292,4 @@ progress {
   flex-flow: column wrap;
   width: 100%;
   align-items: flex-start;
-
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Prompts from './Config'
+import { useHistory } from 'react-router-dom';
 
 export default function Prompt({
         promptNumber, 
@@ -7,18 +8,25 @@ export default function Prompt({
         currentScore, 
         increaseScore, 
         setOptionType, 
-        resetDiceResult
+        resetDiceResult,
     }) {
+        
+    let history = useHistory()
         
     let selectedPrompt = Prompts().find(prompt => {
         return prompt.promptNumber == promptNumber
     })
 
     let handleClick = (event, option) => {
-        setPromptNumber(event.target.id)
-        increaseScore(currentScore)
-        setOptionType(option.type)
-        resetDiceResult()
+        if (event.target.id <= 20) { 
+            setPromptNumber(event.target.id)
+            increaseScore(currentScore)
+            setOptionType(option.type)
+            resetDiceResult()
+        }
+        else {
+            history.push('/credits')
+        }
     }
 
     let selectedPromptText = selectedPrompt.promptText.split("\n")
@@ -34,10 +42,10 @@ export default function Prompt({
         )
     })
 
-    let selectedPromptOptions = selectedPrompt.promptOptions.map(option => {
+    let selectedPromptOptions = selectedPrompt.promptOptions.map((option, index) => {
         return (
             <div 
-                key={option.nextPrompt} 
+                key={index} 
                 className="prompt-option"
             >
                 <button 
