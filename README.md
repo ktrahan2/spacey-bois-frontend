@@ -77,7 +77,6 @@ Spacey Bois frontend is made with React-Redux and vanilla CSS. The game is based
 ## Technology Used
 
 - React-Redux
-- JSX
 - CSS
 
 
