@@ -1,68 +1,93 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Spacey Bois
 
-## Available Scripts
+Spacey Bois is a text-based adventure game based off a role-playing game called Scum and Villainy.  
 
-In the project directory, you can run:
+# Table Of Contents 
+- [Description](https://github.com/ktrahan2spacey-bois-frontend#description)
+- [How It Works](https://github.com/ktrahan2/spacey-bois-frontend#how-it-works)
+- [Example Code](https://github.com/ktrahan2/spacey-bois-frontend#example-code)
+- [Technology Used](https://github.com/ktrahan2/spacey-bois-frontend#technology-used)
+- [Setting up for the Application](https://github.com/spacey-bois-frontend#setting-up-for-the-application)
+- [Main Features](https://github.com/ktrahan2/spacey-bois-frontend#main-features)
+- [Features in Progress](https://github.com/ktrahan2/spacey-bois-frontend#features-in-progress)
+- [Contact Information](https://github.com/ktrahan2/spacey-bois-frontend#contact-information)
+- [Link to Backend Repo](https://github.com/ktrahan2/spacey-bois-frontend#link-to-backend-repo)
 
-### `yarn start`
+## Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Spacey Bois frontend is made with React-Redux and vanilla CSS. The game is based around a role-playing game called Scum and Villainy. It allows the user to create a character with a name and class type. Then the user is prompted with different options in order to advance the storyline. The storyline prompts are mostly generic but there is an example of one custom prompt showing what happens when a user makes an attack roll. At the end the player is given a score which is then add into the database and rendered on the /highscores route on the frontend. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## How It Works
 
-### `yarn test`
+[Belay Land](https://youtu.be/mLFRHayBuT4)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Example Code 
+```
+   const prompt8and9AttackResponse = () => {
+        if (diceResult === 6) {
+            let optionValue1 = "Move the bodies"
+            let optionValue2 = "Help Grips"
+            if (playerWeapon === "Blaster" || playerWeapon === "Krieger Blaster Pistol") {
+                let text = `You fire off a few precision rounds silencing the inspectors before they even move."\n Vapor: 'Wow check out the itchy finger on ${playerName}. I knew there was something about them I liked.'\n Nines: 'We need to get out of here before the station realizes what happened and closes the Jump Gate.\n ${playerName} can you put these bodies back on the Malklaith shuttle or help Grips clean up the Science Bay.'`
+                let response = {
+                    text: text,
+                    optionValues: [optionValue1, optionValue2],
+                    nextPrompt: [12, 13]
+                }
+                return response
+            } else if (playerWeapon === "Psyblade") {
+                let text = `You reveal your Psyblade and cut through the inspectors before they can even let out a sound."\n Vapor: 'Wow check out the itchy finger on ${playerName}. I knew there was something about them I liked.'\n Nines: 'We need to get out of here before the station realizes what happened and closes the Jump Gate.'\n ${playerName} can you put these bodies back on the Malklaith shuttle or help Grips clean up the Science Bay.'`
+                let response = {
+                    text: text,
+                    optionValues: [optionValue1, optionValue2],
+                    nextPrompt: [12, 13]
+                }
+                return response
+            }.....
+    }    
+```
+```
+   
+```
+```
+    
+```
 
-### `yarn build`
+## Technology Used
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React-Redux
+- JSX
+- CSS
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setting up for the application
 
-### `yarn eject`
+To start the server run
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+    npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+``` 
+    npm start 
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Main Features
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- User can create a character with a name and class type
+- User can play through a list of prompts that progress the storyline
+- User can see the list of highscores
 
-## Learn More
+## Features in Progress
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Enable users to save their game 
+- Transfer config.js to the backend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact Information
 
-### Code Splitting
+[Kyle Trahan](https://www.linkedin.com/in/kyle-trahan-8384678b/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Link to Backend Repo
 
-### Analyzing the Bundle Size
+https://github.com/ktrahan2/spacey-bois-backend
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
