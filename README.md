@@ -19,7 +19,7 @@ Spacey Bois frontend is made with React-Redux and vanilla CSS. The game is based
 
 ## How It Works
 
-[Belay Land](https://youtu.be/mLFRHayBuT4)
+[Spacey Bois](https://youtu.be/mLFRHayBuT4)
 
 ## Example Code 
 ```
@@ -46,11 +46,32 @@ Spacey Bois frontend is made with React-Redux and vanilla CSS. The game is based
             }.....
     }    
 ```
-```
    
 ```
-```
-    
+   determineHarmTaken = () => {
+        let roll = this.roll6SidedDie()
+        this.props.diceResult(roll)
+
+        if (roll === 6) {
+        } else if (roll === 5 || roll === 4) {
+            this.setState((prevState) => {
+                return {currentHarm: {
+                    ...prevState.currentHarm,  
+                    levelOne: prevState.currentHarm.levelOne + 1, 
+                }}
+            })
+        } else {
+            this.setState((prevState) => {
+                return {currentHarm: {
+                    ...prevState.currentHarm,  
+                    levelTwo: prevState.currentHarm.levelTwo + 1, 
+                }}
+            })
+        }
+        this.setState({
+            optionType: ""
+        })
+    }
 ```
 
 ## Technology Used
