@@ -19,7 +19,7 @@ Spacey Bois frontend is made with React-Redux and vanilla CSS. The game is based
 
 ## How It Works
 
-[Spacey Bois](https://youtu.be/mLFRHayBuT4)
+[Spacey Bois](https://www.youtube.com/watch?v=xcrq1DzK1YA)
 
 ## Example Code 
 ```
