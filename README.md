@@ -1,6 +1,6 @@
 # Spacey Bois
 
-Spacey Bois is a text-based adventure game based off a role-playing game called Scum and Villainy.  
+Spacey Bois is a text-based adventure game. 
 
 # Table Of Contents 
 - [Description](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#description)
