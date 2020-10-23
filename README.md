@@ -4,14 +4,14 @@ Spacey Bois is a text-based adventure game based off a role-playing game called 
 
 # Table Of Contents 
 - [Description](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#description)
-- [How It Works](https://github.com/ktrahan2/spacey-bois-frontend#how-it-works)
-- [Example Code](https://github.com/ktrahan2/spacey-bois-frontend#example-code)
-- [Technology Used](https://github.com/ktrahan2/spacey-bois-frontend#technology-used)
-- [Setting up for the Application](https://github.com/spacey-bois-frontend#setting-up-for-the-application)
-- [Main Features](https://github.com/ktrahan2/spacey-bois-frontend#main-features)
-- [Features in Progress](https://github.com/ktrahan2/spacey-bois-frontend#features-in-progress)
-- [Contact Information](https://github.com/ktrahan2/spacey-bois-frontend#contact-information)
-- [Link to Backend Repo](https://github.com/ktrahan2/spacey-bois-frontend#link-to-backend-repo)
+- [How It Works](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#how-it-works)
+- [Example Code](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#example-code)
+- [Technology Used](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#technology-used)
+- [Setting up for the Application](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#setting-up-for-the-application)
+- [Main Features](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#main-features)
+- [Features in Progress](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#features-in-progress)
+- [Contact Information](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#contact-information)
+- [Link to Backend Repo](https://github.com/ktrahan2/spacey-bois-frontend/blob/main/README.md#link-to-backend-repo)
 
 ## Description
 
