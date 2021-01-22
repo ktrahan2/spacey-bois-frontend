@@ -182,24 +182,24 @@ export default function getPrompts() {
                 }
             ]
         },
-        {
-            promptNumber: 10,
-            promptEpisode: "Episode 1: Enter the Nautilus",
-            promptTitle: "attack the guards",
-            promptText: `You don't trust that the ruse will work, so you pull out your ${playerWeapon} and start attacking the inspectors.\n ${prompt8and9AttackResponse().text}`,
-            promptOptions: [
-                {
-                    value: `${prompt8and9AttackResponse().optionValues[0]}`,
-                    nextPrompt: `${prompt8and9AttackResponse().nextPrompt[0]}`,
-                    type: "default"
-                },
-                {
-                    value: `${prompt8and9AttackResponse().optionValues[1]}`,
-                    nextPrompt: `${prompt8and9AttackResponse().nextPrompt[1]}`,
-                    type: "default" 
-                }
-            ]
-        },
+        // {
+        //     promptNumber: 10,
+        //     promptEpisode: "Episode 1: Enter the Nautilus",
+        //     promptTitle: "attack the guards",
+        //     promptText: `You don't trust that the ruse will work, so you pull out your ${playerWeapon} and start attacking the inspectors.\n ${prompt8and9AttackResponse().text}`,
+        //     promptOptions: [
+        //         {
+        //             value: `${prompt8and9AttackResponse().optionValues[0]}`,
+        //             nextPrompt: `${prompt8and9AttackResponse().nextPrompt[0]}`,
+        //             type: "default"
+        //         },
+        //         {
+        //             value: `${prompt8and9AttackResponse().optionValues[1]}`,
+        //             nextPrompt: `${prompt8and9AttackResponse().nextPrompt[1]}`,
+        //             type: "default" 
+        //         }
+        //     ]
+        // },
         { 
             promptNumber: 11,
             promptEpisode: "Episode 1: Enter the Nautilus",

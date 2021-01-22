@@ -9,7 +9,7 @@ export default function CharacterClassOptions({ classTypes }) {
             for ( let i = 1; i < classTypesLength; i++) {
                 
                 let currentClass = classTypes[i]
-                optionArray.push(<option key={currentClass.id}>{currentClass.name}</option>)
+                optionArray.push(<option value={currentClass.id} key={currentClass.id}>{currentClass.name}</option>)
             }
             return optionArray
         }
@@ -17,10 +17,7 @@ export default function CharacterClassOptions({ classTypes }) {
 
     return (
         <>
-            { classTypes ? 
-                createClassOptions()  
-                : null
-            }
+            {createClassOptions()}
         </>
     )
 }

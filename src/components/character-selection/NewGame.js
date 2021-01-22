@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import ClassList from "./config.json"
+// import ClassList from "./config.json"
 import { connect } from 'react-redux'
 import CharacterEquipment from './CharacterEquipment'
 import CharacterClassOptions from './CharacterClassOptions'
@@ -8,62 +8,39 @@ import CharacterClassOptions from './CharacterClassOptions'
 function NewGame(props) {
 
     const [ classTypes, setClassTypes] = useState({})
+    const classTypesLength = Object.keys(classTypes).length
 
     useEffect( () => {
         fetch('http://127.0.0.1:9000/class_types')
         .then(response => response.json())
-        .then(result => mapClassTypeToState(result))
+        .then(classTypes => mapClassTypeToState(classTypes))
     }, [])
 
-    const mapClassTypeToState = ( result ) => {
+    const mapClassTypeToState = ( classTypes ) => {
         
-        const mappedObject = {}
+        const mappedClassTypes = {}
 
-        result.forEach( classType => {
-            mappedObject[classType.id] = classType
+        classTypes.forEach( classType => {
+            mappedClassTypes[classType.id] = classType
         })
         
-        setClassTypes(mappedObject)
+        setClassTypes(mappedClassTypes)
     }
 
-    const handleClick = () => {
-        ClassList.classes.map(character => {
-            if (props.class &&
-                character.classTitle === props.class) {
-                props.addStartingEquipment(
-                    [...character.startingEquipment]
-                )
-            }
-        })
-    }
-
-    const setPlayerName = (event) => {
-        props.addPlayerName(event.target.value)
-    }
-
-    const selectedClass = (event) => {
-        props.addClass(event.target.value)
-    } 
-    
     const renderClassDescription = () => {
-        return ClassList.classes.map((character, index) => {
-            
-            let classTitle = character.classTitle
-            let currentClassSelected = props.class
-            
-            if (currentClassSelected &&
-                classTitle === currentClassSelected) {
-                return (
-                    <section key={index}>
-                        <h2>{character.classTitle}</h2>
-                        <p>{character.description}</p>
-                        <div className="starting-equipment">
-                            <CharacterEquipment character={character}/>
-                        </div>
-                    </section>
-                )
-            }
-        })
+        
+        if ( classTypesLength > 0 && props.class ) {
+            let classType = classTypes[props.class]
+            return (
+                <section key={classType.id}>
+                    <h2>{classType.name}</h2>
+                    <p>{classType.description}</p>
+                    <div className="starting-equipment">
+                        <CharacterEquipment classType={classType}/>
+                    </div>
+                </section>
+            )
+        }
     }
 
     return (
@@ -78,7 +55,7 @@ function NewGame(props) {
                             <p>Choose your characters' name:</p>
                             <input 
                                 className="player-name-input"
-                                onChange={setPlayerName} 
+                                onChange={ ( event ) => props.addPlayerName(event.target.value)} 
                                 name="playername" 
                                 placeholder="Enter Player Name" 
                             >
@@ -86,7 +63,7 @@ function NewGame(props) {
                         </div>
                         <div className="choose-class">
                             <p>Choose a class:</p>
-                            <select className="choose-class-selector" onChange={selectedClass}>
+                            <select className="choose-class-selector" onChange={ (event) => props.addClass(event.target.value)}>
                                 <CharacterClassOptions classTypes={classTypes}/>
                             </select>
                         </div>
@@ -96,7 +73,7 @@ function NewGame(props) {
                     </div>
                 </div>
                 <div className="start-game">
-                    <Link className="link" onClick={handleClick} to="/enter-the-nautilus">Start Game</Link>
+                    <Link className="link" to="/enter-the-nautilus">Start Game</Link>
                 </div>    
             </main>
         </div>

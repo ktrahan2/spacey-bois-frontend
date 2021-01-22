@@ -16,7 +16,7 @@ const reducer = combineReducers({
 
 export const store = createStore(reducer)
 
-function addStartingEquipment(state=[], action) {
+export function addStartingEquipment(state={}, action) {
   switch(action.type){
     case "ADDSTARTINGEQUIPMENT":
       return action.payload

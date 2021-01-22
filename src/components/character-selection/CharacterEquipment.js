@@ -1,15 +1,24 @@
 import React from 'react'
+import { useDispatch } from "react-redux"
 
-export default function CharacterEquipment({character}) {
+export default function CharacterEquipment({ classType }) {
     
-    const characterEquipment = character.startingEquipment.map((item, index) => {
-        return <h4 key={index}>{item}</h4>
-    })
+    //refactor redux store in order to do this. Change everything to use hooks
+    const mapCharacterEquipmentToState = () => {
+        return classType.starting_equipments.map( equipment => (
+            console.log(equipment)
+        ))
+    }
+    const renderCharacterEquipment = () => {
+        return classType.starting_equipments.map( equipment => (
+            <h4 key={equipment.id}>{equipment.equipment.name}</h4>
+        ))
+    }
 
     return (
         <div>
             <h3>Starting Equipment</h3>
-            {characterEquipment}
+            {renderCharacterEquipment()}
         </div>
     )
 }
