@@ -18,13 +18,13 @@ export default function App(){
       </header>
       <main>
         <Switch>
-        <Route path="/" component={Home} exact/>
-        <Route path="/highscores" component={CreateTable}/>
-        <Route path="/newgame" component={NewGame}/> 
-        <Route path="/hud" component={MainHUD}/>
-        <Route path="/warp" component={Warp}/>
-        <Route path="/enter-the-nautilus" component={EnterTheNautilus}/>
-        <Route path="/credits" component={FinishEpisodeOne}/>
+          <Route path="/" component={Home} exact/>
+          <Route path="/highscores" component={CreateTable}/>
+          <Route path="/newgame" component={NewGame}/> 
+          <Route path="/hud" component={MainHUD}/>
+          <Route path="/warp" component={Warp}/>
+          <Route path="/enter-the-nautilus" component={EnterTheNautilus}/>
+          <Route path="/credits" component={FinishEpisodeOne}/>
         </Switch>
       </main>
       <footer>

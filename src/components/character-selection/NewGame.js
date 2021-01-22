@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ClassList from "./config.json"
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import CharacterEquipment from './CharacterEquipment'
 import CharacterClassOptions from './CharacterClassOptions'
 
 function NewGame(props) {
+
+    const [ classTypes, setClassTypes] = useState({})
+
+    useEffect( () => {
+        fetch('http://127.0.0.1:9000/class_types')
+        .then(response => response.json())
+        .then(result => mapClassTypeToState(result))
+    }, [])
+
+    const mapClassTypeToState = ( result ) => {
+        
+        const mappedObject = {}
+
+        result.forEach( classType => {
+            mappedObject[classType.id] = classType
+        })
+        
+        setClassTypes(mappedObject)
+    }
 
     const handleClick = () => {
         ClassList.classes.map(character => {
@@ -68,7 +87,7 @@ function NewGame(props) {
                         <div className="choose-class">
                             <p>Choose a class:</p>
                             <select className="choose-class-selector" onChange={selectedClass}>
-                                <CharacterClassOptions/>
+                                <CharacterClassOptions classTypes={classTypes}/>
                             </select>
                         </div>
                     </div>

@@ -1,16 +1,26 @@
 import React from 'react'
-import ClassList from "./config.json"
-export default function CharacterClassOptions() {
+
+export default function CharacterClassOptions({ classTypes }) {
     
-    let classList = ClassList.classes.map((characterClass, index) => {
-        return (
-            <option key={index}>{characterClass.classTitle}</option>
-        )
-    })
+    const createClassOptions = () => {
+        let optionArray = []
+        let classTypesLength = Object.keys(classTypes).length
+        if ( classTypesLength > 0 ) {
+            for ( let i = 1; i < classTypesLength; i++) {
+                
+                let currentClass = classTypes[i]
+                optionArray.push(<option key={currentClass.id}>{currentClass.name}</option>)
+            }
+            return optionArray
+        }
+    }
 
     return (
         <>
-            {classList}    
+            { classTypes ? 
+                createClassOptions()  
+                : null
+            }
         </>
     )
 }

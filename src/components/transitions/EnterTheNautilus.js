@@ -9,7 +9,7 @@ export default class EnterTheNautilus extends Component {
         }
     
         render() {
-        return <img id="nautilus-loading-screen"src="https://i.imgur.com/xvewX93.jpg"/>
+        return <img id="nautilus-loading-screen"src="https://i.imgur.com/xvewX93.jpg" alt="a space ship that says Episode 1: Enter the Nautilus"/>
     
         }
     

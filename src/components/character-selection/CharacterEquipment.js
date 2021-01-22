@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CharacterEquipment({character}) {
     
-    let characterEquipment = character.startingEquipment.map((item, index) => {
+    const characterEquipment = character.startingEquipment.map((item, index) => {
         return <h4 key={index}>{item}</h4>
     })
 
