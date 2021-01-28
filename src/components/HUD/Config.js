@@ -1,4 +1,4 @@
-import { store } from '../../index'
+import { store } from '../../reducer/combinereducer'
 
 export default function getPrompts() {
 
@@ -6,7 +6,6 @@ export default function getPrompts() {
     let playerName = storeState.addPlayerName
     let playerWeapon = storeState.addStartingEquipment[0]
     let diceResult = store.diceResult
-    // console.log(storeState)
 
     //example of making prompts more complex, won't do more than one for project week
     const prompt8and9AttackResponse = () => {
