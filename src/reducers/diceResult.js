@@ -1,5 +1,5 @@
-const diceResult = (state=0, action) => {
-    switch(action.type) {
+const diceResult = ( state=0, action ) => {
+    switch( action.type ) {
       case "DICERESULT":
         return action.payload
       default:

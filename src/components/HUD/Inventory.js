@@ -1,28 +1,21 @@
 import React from 'react'
-import {connect} from 'react-redux'
 
-function Inventory(props) {
+const Inventory = ({ startingEquipment }) => {
 
-    let renderItems = props.equipment.map((item, index) => {
-        return (
-            <p key={index}>{item}</p>        
-        )
-    })
+    const renderItems = () => { 
+        return startingEquipment.map((item, index) => (
+            <p key={index}>{item['equipment']['name']}</p>        
+        ))
+    }
 
     return (
         <>
             <h2>Inventory</h2>
             <div className="iventory-items">
-                {renderItems}
+                {renderItems()}
             </div>
         </>
     )
 }
-
-function mapStateToProps(state) {
-    return {
-      equipment: state.addStartingEquipment,
-    }
-  }
   
-export default connect(mapStateToProps, null)(Inventory);
+export default Inventory

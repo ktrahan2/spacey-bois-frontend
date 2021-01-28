@@ -1,10 +1,10 @@
-import { store } from '../../reducer/combinereducer'
+import { store } from '../../reducers/combinereducer'
 
 export default function getPrompts() {
 
     let storeState = store.getState()
     let playerName = storeState.addPlayerName
-    let playerWeapon = storeState.addStartingEquipment[0]
+    // let "blaster"= storeState.addStartingEquipment[0]
     let diceResult = store.diceResult
 
     //example of making prompts more complex, won't do more than one for project week
@@ -12,7 +12,7 @@ export default function getPrompts() {
         if (diceResult === 6) {
             let optionValue1 = "Move the bodies"
             let optionValue2 = "Help Grips"
-            if (playerWeapon === "Blaster" || playerWeapon === "Krieger Blaster Pistol") {
+            if ("blaster"=== "Blaster" || "blaster"=== "Krieger Blaster Pistol") {
                 let text = `You fire off a few precision rounds silencing the inspectors before they even move."\n Vapor: 'Wow check out the itchy finger on ${playerName}. I knew there was something about them I liked.'\n Nines: 'We need to get out of here before the station realizes what happened and closes the Jump Gate.\n ${playerName} can you put these bodies back on the Malklaith shuttle or help Grips clean up the Science Bay.'`
                 let response = {
                     text: text,
@@ -20,7 +20,7 @@ export default function getPrompts() {
                     nextPrompt: [12, 13]
                 }
                 return response
-            } else if (playerWeapon === "Psyblade") {
+            } else if ("blaster"=== "Psyblade") {
                 let text = `You reveal your Psyblade and cut through the inspectors before they can even let out a sound."\n Vapor: 'Wow check out the itchy finger on ${playerName}. I knew there was something about them I liked.'\n Nines: 'We need to get out of here before the station realizes what happened and closes the Jump Gate.'\n ${playerName} can you put these bodies back on the Malklaith shuttle or help Grips clean up the Science Bay.'`
                 let response = {
                     text: text,
@@ -32,7 +32,7 @@ export default function getPrompts() {
         } else if (diceResult === 4 || diceResult === 5) {
             let optionValue1 = "Move the bodies"
             let optionValue2 = "Help Grips"
-            if (playerWeapon === "Blaster" || playerWeapon === "Krieger Blaster Pistol") {
+            if ("blaster"=== "Blaster" || "blaster"=== "Krieger Blaster Pistol") {
                 let text = `Firing, you hit all but one of them before they can return fire.\n Your leg ignites with a fiery burst of pain.\n Vapor: 'Wow check out the itchy finger on ${playerName}. Better luck next time.'\n Nines: 'We need to get out of here before the station realizes what happened and closes the Jump Gate.'\n ${playerName} can you put these bodies back on the Malklaith shuttle or help Grips clean up the Science Bay.'`
                 let response = {
                     text: text,
@@ -40,7 +40,7 @@ export default function getPrompts() {
                     nextPrompt: [12, 13]
                 }
                 return response
-            } else if (playerWeapon === "Psyblade") {
+            } else if ("blaster"=== "Psyblade") {
                 let text = `You charge the inspectors, able to cut down all but one before he gets a shot off.\n Your leg ignites with a fiery burst of pain.\n Vapor: 'Wow check out the itchy finger on ${playerName}. Better luck next time.'\n Nines: 'We need to get out of here before the station realizes what happened and closes the Jump Gate.'\n ${playerName} can you put these bodies back on the Malklaith shuttle or help Grips clean up the Science Bay.'`
                 let response = {
                     text: text,
@@ -52,7 +52,7 @@ export default function getPrompts() {
         } else {
             let optionValue1 = "Get carried to the Medical Bay"
             let optionValue2 = "Shrug it off and try to take yourself"
-            if (playerWeapon === "Blaster" || playerWeapon === "Krieger Blaster Pistol") {
+            if ("blaster"=== "Blaster" || "blaster"=== "Krieger Blaster Pistol") {
                 let text = `The inspectors react just after your first shot and begin to return fire. You feel a burst of pain ignite through your body. As you slump to the ground you see your hands and stomach are covered in blood.\n The rest of your crew is able to finish off the remaining inspectors.\n Nines: This is all f*ucked, we need to get out of here. Vapor take ${playerName} up to the medical bay and prepare for a bumpy ride.`
                 let response = {
                     text: text,
@@ -60,7 +60,7 @@ export default function getPrompts() {
                     nextPrompt: [14, 14]
                 }
                 return response
-            } else if (playerWeapon === "Psyblade") {
+            } else if ("blaster"=== "Psyblade") {
                 let text = `The inspectors react just as you cut the first one down and begin to return fire. You feel a burst of pain ignite through your body. As you slump to the ground you see your hands and stomach are covered in blood.\n The rest of your crew is able to finish off the remaining inspectors.\n Nines: This is all f*ucked, we need to get out of here. Vapor take ${playerName} up to the medical bay and prepare for a bumpy ride.`
                 let response = {
                     text: text,
@@ -155,7 +155,7 @@ export default function getPrompts() {
             promptTitle: "meditating upon guard arrival",
             promptText: "From down the hall you hear footsteps approaching. They stop just shy of the engine room door. You can hear Nines and an unfamiliar voice.\n Nines: 'Look I would love to keep showing you boys around but as you can see our Gedi and his apprentice have picked the engine room to meditate and I would hate to interrupt them.\n The inspector lets out a loud sigh, 'Look I don't want to be a pain but regulations are regulations.\n Vapor: 'Oh boy, this is going to be good.\n",
             promptOptions: [
-                {value: `Pull out your ${playerWeapon}, and attack the inspectors`,
+                {value: `Pull out your  and attack the inspectors`,
                     nextPrompt: 10,
                     type: "attack"
                 },
@@ -171,7 +171,7 @@ export default function getPrompts() {
             promptTitle: "looking busy in engine room upon guard arrival",
             promptText: "From down the hall you hear footsteps approaching. You continue working as you hear them stop just shy of the engine room door. You can hear Nines and an unfamiliar voice.\n Nines: 'Look I would love to keep showing you boys around but as you can see our Gedi has picked the engine room to meditate and I would hate to interrupt him.\n The inspector lets out a loud sigh, Inspector: 'Look I don't want to be a pain but regulations are regulations.\n Vapor: 'Oh boy, this is going to be good.\n",
             promptOptions: [
-                {value: `Pull out your ${playerWeapon}, and attack the inspectors`,
+                {value: `Pull out your  and attack the inspectors`,
                     nextPrompt: 10,
                     type: "attack"
                 },

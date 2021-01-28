@@ -1,7 +1,7 @@
 import React from 'react'
 import HighScoreRow from './HighScoreRow.js'
 
-export default function HighScores({highscores}) {
+const HighScores = ({highscores}) => {
 
     highscores = highscores.sort((a,b) => b.score - a.score).slice(0, 10)
     
@@ -32,3 +32,5 @@ export default function HighScores({highscores}) {
         </table>
     )
 }
+
+export default HighScores

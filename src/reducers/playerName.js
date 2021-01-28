@@ -1,5 +1,5 @@
-const addPlayerName = (state="", action) => {
-    switch(action.type) {
+const playerName = ( state="", action ) => {
+    switch( action.type ) {
       case "ADDPLAYERNAME":
         return action.payload
       default:
@@ -7,4 +7,4 @@ const addPlayerName = (state="", action) => {
     }
 }
 
-export default addPlayerName
+export default playerName

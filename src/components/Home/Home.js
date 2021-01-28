@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Home() {
+const Home = () => {
 
     return (
         <section className="starting-menu">
@@ -14,3 +14,5 @@ export default function Home() {
         </section>
     )
 }
+
+export default Home

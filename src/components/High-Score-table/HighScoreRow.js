@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function HighScoreRow({highscore, index}) {
+const HighScoreRow = ({highscore, index}) => {
     return (
         <tr className="table-rows">
             <td>{index + 1}</td>
@@ -10,3 +10,5 @@ export default function HighScoreRow({highscore, index}) {
         </tr>
     )
 }
+
+export default HighScoreRow

@@ -1,33 +1,39 @@
 import React from 'react'
-import {connect} from 'react-redux'
 
-function PlayerInformation(props) {
+const PlayerInformation = ({
+    playerName,
+    playerClass,
+    currentHarm
+}) => {
     
     const showLevelOneHarm = () => {
-        return <progress 
-                    className="health-bar" 
-                    value={props.currentHarm.levelOne} 
-                    max="3"
-                >
-                </progress>        
+        return (
+            <progress 
+                className="health-bar" 
+                value={currentHarm.levelOne} 
+                max="3"
+            >
+            </progress>        
+        )
     }
 
     const showLevelTwoHarm = () => {
-        return <progress 
-                    className="health-bar" 
-                    value={props.currentHarm.levelTwo} 
-                    max="3"
-                >
-                </progress>        
-
+        return (
+            <progress 
+                className="health-bar" 
+                value={currentHarm.levelTwo} 
+                max="3"
+            >
+            </progress>        
+        )
     }
     
     return (
         <div>
             <div className="player-bio">
                 <h2>Player Profile</h2>
-                <p>Name: {props.playerName}</p>
-                <p>Class: {props.class}</p>
+                <p>Name: {playerName}</p>
+                <p>Class: {playerClass}</p>
                 <p>Level: 1</p>
             </div>
             <div className="player-harm">
@@ -38,13 +44,6 @@ function PlayerInformation(props) {
         </div>
     )
 }
-
-function mapStateToProps(state) {
-    return {
-      playerName: state.addPlayerName,
-      class: state.addClass
-    }
-  }
   
-export default connect(mapStateToProps, null)(PlayerInformation);
+export default PlayerInformation
 

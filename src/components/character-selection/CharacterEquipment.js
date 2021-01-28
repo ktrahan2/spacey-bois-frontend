@@ -1,14 +1,7 @@
 import React from 'react'
-import { useDispatch } from "react-redux"
 
-export default function CharacterEquipment({ classType }) {
-    
-    //refactor redux store in order to do this. Change everything to use hooks
-    const mapCharacterEquipmentToState = () => {
-        return classType.starting_equipments.map( equipment => (
-            console.log(equipment)
-        ))
-    }
+const CharacterEquipment = ({ classType }) => {
+
     const renderCharacterEquipment = () => {
         return classType.starting_equipments.map( equipment => (
             <h4 key={equipment.id}>{equipment.equipment.name}</h4>
@@ -22,3 +15,5 @@ export default function CharacterEquipment({ classType }) {
         </div>
     )
 }
+
+export default CharacterEquipment

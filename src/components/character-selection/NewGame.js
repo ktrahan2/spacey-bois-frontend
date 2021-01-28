@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-// import ClassList from "./config.json"
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import CharacterEquipment from './CharacterEquipment'
 import CharacterClassOptions from './CharacterClassOptions'
 
-function NewGame(props) {
+const NewGame = () => {
 
-    const [ classTypes, setClassTypes] = useState({})
+    const dispatch = useDispatch()
+    const [ classTypes, setClassTypes ] = useState({})
+    const playerClass = useSelector(state => state.playerClass)
     const classTypesLength = Object.keys(classTypes).length
-
+    const chosenClassType = classTypes[playerClass]
+    
     useEffect( () => {
         fetch('http://127.0.0.1:9000/class_types')
         .then(response => response.json())
         .then(classTypes => mapClassTypeToState(classTypes))
+        .catch(error => console.error(error))
     }, [])
 
     const mapClassTypeToState = ( classTypes ) => {
-        
         const mappedClassTypes = {}
 
         classTypes.forEach( classType => {
@@ -28,15 +30,14 @@ function NewGame(props) {
     }
 
     const renderClassDescription = () => {
-        
-        if ( classTypesLength > 0 && props.class ) {
-            let classType = classTypes[props.class]
+        if ( classTypesLength > 0 && playerClass ) {
+            
             return (
-                <section key={classType.id}>
-                    <h2>{classType.name}</h2>
-                    <p>{classType.description}</p>
+                <section key={chosenClassType.id}>
+                    <h2>{chosenClassType.name}</h2>
+                    <p>{chosenClassType.description}</p>
                     <div className="starting-equipment">
-                        <CharacterEquipment classType={classType}/>
+                        <CharacterEquipment classType={chosenClassType}/>
                     </div>
                 </section>
             )
@@ -55,7 +56,7 @@ function NewGame(props) {
                             <p>Choose your characters' name:</p>
                             <input 
                                 className="player-name-input"
-                                onChange={ ( event ) => props.addPlayerName(event.target.value)} 
+                                onChange={ ( event ) => dispatch({ type: "ADDPLAYERNAME", payload: event.target.value })} 
                                 name="playername" 
                                 placeholder="Enter Player Name" 
                             >
@@ -63,7 +64,7 @@ function NewGame(props) {
                         </div>
                         <div className="choose-class">
                             <p>Choose a class:</p>
-                            <select className="choose-class-selector" onChange={ (event) => props.addClass(event.target.value)}>
+                            <select className="choose-class-selector" onChange={ ( event ) => dispatch({ type: "ADDCLASS", payload: event.target.value })}>
                                 <CharacterClassOptions classTypes={classTypes}/>
                             </select>
                         </div>
@@ -73,36 +74,16 @@ function NewGame(props) {
                     </div>
                 </div>
                 <div className="start-game">
-                    <Link className="link" to="/enter-the-nautilus">Start Game</Link>
+                    <Link 
+                        className="link" 
+                        to="/enter-the-nautilus"
+                        onClick={ () => dispatch({type: "ADDSTARTINGEQUIPMENT", payload: chosenClassType.starting_equipments})}
+                    > Start Game
+                    </Link>
                 </div>    
             </main>
         </div>
     )
 }
-
-function mapStateToProps(state) {
-    return {
-      playerName: state.addPlayerName,
-      startingEquipment: state.addStartingEquipment,
-      class: state.addClass
-    }
-  }
   
-  function mapDispatchToProps(dispatch) {
-    return {
-        addClass: (characterClass) => dispatch({
-            type: "ADDCLASS", 
-            payload: characterClass
-        }),
-        addPlayerName: (playerName) => dispatch({
-            type: "ADDPLAYERNAME",
-            payload: playerName
-        }),
-        addStartingEquipment: (startingEquipment) => dispatch({
-            type: "ADDSTARTINGEQUIPMENT",
-            payload: startingEquipment
-        })
-    }
-  }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(NewGame);
+export default NewGame;
