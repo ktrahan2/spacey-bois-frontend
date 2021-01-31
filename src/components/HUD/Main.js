@@ -35,24 +35,6 @@ const Main = () =>{
         }).then(response => response.json())
         .catch(error => console.error(error))
     }
-
-    const increaseScore = (currentScore) => {
-        setScore(score + 100)
-    }
-
-    //change to useEffect ?
-    // useEffect( () => {
-    //     determineHarmTaken()
-    // }, [optionType])
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevState.optionType !== "attack" && this.state.optionType === "attack") {
-    //         this.determineHarmTaken()
-    //     }
-    //     this.sendHarmWarning()
-    //     if (prevProps.dice !== "") {
-    //         this.resetDiceResult()
-    //     }
-    // }
     
     const determineHarmTaken = () => {
         let roll = roll6SidedDie()
@@ -79,16 +61,6 @@ const Main = () =>{
     const resetDiceResult = () => {
         dispatch({type: "DICERESULT", payload: ""})
     }
-   
-    // needs tidied up, only want to send alert when they first hit 2
-
-    const sendHarmWarning = () => {
-        if (this.state.currentHarm.levelOne === 2) {
-            return window.alert('You are in danger of being knocked unconscious')
-        } else if (this.state.currentHarm.levelTwo === 2) {
-            return window.alert('You are in danger of dying!!!')
-        }
-    }
         
     return (
         <div className="hud">
@@ -106,7 +78,6 @@ const Main = () =>{
                             promptNumber={promptNumber}
                             setPromptNumber={setPromptNumber}
                             currentScore={score}
-                            increaseScore={increaseScore}
                             setOptionType={setOptionType}
                             resetDiceResult={resetDiceResult}
                             sendHighScore={sendHighScore}

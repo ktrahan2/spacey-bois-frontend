@@ -3,11 +3,9 @@ import { store } from '../../reducers/combinereducer'
 export default function getPrompts() {
 
     let storeState = store.getState()
-    let playerName = storeState.addPlayerName
-    // let "blaster"= storeState.addStartingEquipment[0]
-    let diceResult = store.diceResult
-
-    //example of making prompts more complex, won't do more than one for project week
+    let playerName = storeState.playerName
+    let diceResult = store.diceResulte
+    console.log(storeState)
     const prompt8and9AttackResponse = () => {
         if (diceResult === 6) {
             let optionValue1 = "Move the bodies"
@@ -52,7 +50,7 @@ export default function getPrompts() {
         } else {
             let optionValue1 = "Get carried to the Medical Bay"
             let optionValue2 = "Shrug it off and try to take yourself"
-            if ("blaster"=== "Blaster" || "blaster"=== "Krieger Blaster Pistol") {
+            if ("blaster" === "Blaster" || "blaster" === "Krieger Blaster Pistol") {
                 let text = `The inspectors react just after your first shot and begin to return fire. You feel a burst of pain ignite through your body. As you slump to the ground you see your hands and stomach are covered in blood.\n The rest of your crew is able to finish off the remaining inspectors.\n Nines: This is all f*ucked, we need to get out of here. Vapor take ${playerName} up to the medical bay and prepare for a bumpy ride.`
                 let response = {
                     text: text,
@@ -60,7 +58,7 @@ export default function getPrompts() {
                     nextPrompt: [14, 14]
                 }
                 return response
-            } else if ("blaster"=== "Psyblade") {
+            } else if ("blaster" === "Psyblade") {
                 let text = `The inspectors react just as you cut the first one down and begin to return fire. You feel a burst of pain ignite through your body. As you slump to the ground you see your hands and stomach are covered in blood.\n The rest of your crew is able to finish off the remaining inspectors.\n Nines: This is all f*ucked, we need to get out of here. Vapor take ${playerName} up to the medical bay and prepare for a bumpy ride.`
                 let response = {
                     text: text,
@@ -69,7 +67,6 @@ export default function getPrompts() {
                 }
                 return response
             }
-
         }
     }
 
@@ -185,7 +182,7 @@ export default function getPrompts() {
         //     promptNumber: 10,
         //     promptEpisode: "Episode 1: Enter the Nautilus",
         //     promptTitle: "attack the guards",
-        //     promptText: `You don't trust that the ruse will work, so you pull out your ${playerWeapon} and start attacking the inspectors.\n ${prompt8and9AttackResponse().text}`,
+        //     promptText: `You don't trust that the ruse will work, so you pull out your  and start attacking the inspectors.\n ${prompt8and9AttackResponse().text}`,
         //     promptOptions: [
         //         {
         //             value: `${prompt8and9AttackResponse().optionValues[0]}`,

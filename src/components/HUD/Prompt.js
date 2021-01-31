@@ -1,32 +1,31 @@
 import React from 'react'
 import Prompts from './Config'
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 
 export default function Prompt({
         promptNumber, 
-        setPromptNumber, 
-        currentScore, 
-        increaseScore, 
+        setPromptNumber,  
         setOptionType, 
         resetDiceResult,
         sendHighScore
     }) {
-        
-    let history = useHistory()
+
+    const dispatch = useDispatch()    
+    const history = useHistory()
         
     let selectedPrompt = Prompts().find(prompt => {
         return prompt.promptNumber == promptNumber
     })
 
-    let handleClick = (event, option) => {
+    let selectPromptOption = (event, option) => {
         if (event.target.id <= 20) { 
             setPromptNumber(event.target.id)
-            increaseScore(currentScore)
+            dispatch({ type: "INCREASESCORE", payload: 100})
             setOptionType(option.type)
             resetDiceResult()
         }
         else {
-            console.log("sending from handleclick")
             sendHighScore()
             history.push('/credits')
         }
@@ -45,14 +44,14 @@ export default function Prompt({
         )
     })
 
-    let selectedPromptOptions = selectedPrompt.promptOptions.map((option, index) => {
+    const selectedPromptOptions = selectedPrompt.promptOptions.map((option, index) => {
         return (
             <div 
                 key={index} 
                 className="prompt-option"
             >
                 <button 
-                    onClick={(event) => handleClick(event, option)}
+                    onClick={(event) => selectPromptOption(event, option)}
                     id={option.nextPrompt} 
                     className="button"
                 >
