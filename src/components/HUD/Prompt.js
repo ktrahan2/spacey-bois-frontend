@@ -1,76 +1,71 @@
 import React from 'react'
-import Prompts from './Config'
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import SendHighScore from '../utility/SendHighScore'
+import CreatePromptOption from './CreatePromptOption'
 
 export default function Prompt({
-        promptNumber, 
-        setPromptNumber,  
-        setOptionType, 
+        playerName, 
+        setPromptNumber, 
+        currentPrompt,  
         resetDiceResult,
-        sendHighScore
     }) {
 
     const dispatch = useDispatch()    
     const history = useHistory()
-        
-    let selectedPrompt = Prompts().find(prompt => {
-        return prompt.promptNumber == promptNumber
-    })
+    const playerScore = useSelector( state => state.playerScore)
+    const currentPromptLength = Object.keys(currentPrompt).length
 
     let selectPromptOption = (event, option) => {
+        
         if (event.target.id <= 20) { 
-            setPromptNumber(event.target.id)
-            dispatch({ type: "INCREASESCORE", payload: 100})
-            setOptionType(option.type)
+            setPromptNumber(option.next_prompt)
+            dispatch({ type: "INCREASESCORE", payload: 100 })
             resetDiceResult()
         }
         else {
-            sendHighScore()
+            SendHighScore( playerName, playerScore )
             history.push('/credits')
         }
     }
+    
+    const createPromptText = () => {
+        if ( currentPromptLength > 0 ) {
+            return currentPrompt.prompt_text.split("*").map( ( text, index ) => {
+                return (
+                    <p 
+                        className="prompt-text" 
+                        key={ index }
+                    >
+                        { text }
+                    </p>
+                )
+            })
+        }
+    }
 
-    let selectedPromptText = selectedPrompt.promptText.split("\n")
-
-    selectedPromptText = selectedPromptText.map((text, index) => {
-        return (
-                <p 
-                    className="prompt-text" 
-                    key={index}
-                >
-                    {text}
-                </p>
-        )
-    })
-
-    const selectedPromptOptions = selectedPrompt.promptOptions.map((option, index) => {
-        return (
-            <div 
-                key={index} 
-                className="prompt-option"
-            >
-                <button 
-                    onClick={(event) => selectPromptOption(event, option)}
-                    id={option.nextPrompt} 
-                    className="button"
-                >
-                    {Object.values(option)[0]}
-                </button>
-            </div>
-        )
-    })
+    const createPromptOptions = () => {
+        if ( currentPromptLength > 0 ) {
+            return currentPrompt.prompt_options.map( ( option ) => (
+                <CreatePromptOption 
+                    key={option.id}
+                    option={option}
+                    selectPromptOption={selectPromptOption}
+                />
+            ))
+        }
+    }
 
     return (
         <>
             <div className='prompt-header'>
-                <h1 className="current-episode">{selectedPrompt.promptEpisode}</h1>
+                <h1 className="current-episode">{currentPrompt.title}</h1>
             </div>
             <div className="prompt-texts">
-                <div>{selectedPromptText}</div>
+                <div>{createPromptText()}</div>
             </div>
             <div className="prompt-options">
-                {selectedPromptOptions}
+                {createPromptOptions()}
             </div>
         </>
     )

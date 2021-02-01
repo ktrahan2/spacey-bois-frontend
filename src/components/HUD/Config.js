@@ -5,7 +5,7 @@ export default function getPrompts() {
     let storeState = store.getState()
     let playerName = storeState.playerName
     let diceResult = store.diceResulte
-    console.log(storeState)
+    
     const prompt8and9AttackResponse = () => {
         if (diceResult === 6) {
             let optionValue1 = "Move the bodies"
@@ -122,7 +122,7 @@ export default function getPrompts() {
             promptOptions: [
                 {value: "Continue to meditate",
                     nextPrompt: 8,
-                    type: "default"
+                    type: "attack"
                 },
                 {value: "Try to work on something in the engine room",
                     nextPrompt: 9,
@@ -178,24 +178,24 @@ export default function getPrompts() {
                 }
             ]
         },
-        // {
-        //     promptNumber: 10,
-        //     promptEpisode: "Episode 1: Enter the Nautilus",
-        //     promptTitle: "attack the guards",
-        //     promptText: `You don't trust that the ruse will work, so you pull out your  and start attacking the inspectors.\n ${prompt8and9AttackResponse().text}`,
-        //     promptOptions: [
-        //         {
-        //             value: `${prompt8and9AttackResponse().optionValues[0]}`,
-        //             nextPrompt: `${prompt8and9AttackResponse().nextPrompt[0]}`,
-        //             type: "default"
-        //         },
-        //         {
-        //             value: `${prompt8and9AttackResponse().optionValues[1]}`,
-        //             nextPrompt: `${prompt8and9AttackResponse().nextPrompt[1]}`,
-        //             type: "default" 
-        //         }
-        //     ]
-        // },
+        {
+            promptNumber: 10,
+            promptEpisode: "Episode 1: Enter the Nautilus",
+            promptTitle: "attack the guards",
+            promptText: `You don't trust that the ruse will work, so you pull out your  and start attacking the inspectors.\n`,
+            promptOptions: [
+                {
+                    // value: `${prompt8and9AttackResponse().optionValues[0]}`,
+                    // nextPrompt: `${prompt8and9AttackResponse().nextPrompt[0]}`,
+                    type: "default"
+                },
+                {
+                    // value: `${prompt8and9AttackResponse().optionValues[1]}`,
+                    // nextPrompt: `${prompt8and9AttackResponse().nextPrompt[1]}`,
+                    type: "default" 
+                }
+            ]
+        },
         { 
             promptNumber: 11,
             promptEpisode: "Episode 1: Enter the Nautilus",

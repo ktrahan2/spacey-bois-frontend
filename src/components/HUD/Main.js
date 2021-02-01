@@ -9,57 +9,56 @@ import roll6SidedDie from '../utility/roll6sideddie'
 const Main = () =>{
 
     const dispatch = useDispatch()
-    const playerName = useSelector( state => state.playerName)
-    const playerClass = useSelector( state => state.playerClass)
-    const diceResult = useSelector( state => state.diceResult)
-    const startingEquipment = useSelector( state => state.startingEquipment)
+    const playerName = useSelector( state => state.playerName )
+    const playerClass = useSelector( state => state.playerClass )
+    const startingEquipment = useSelector( state => state.startingEquipment )
 
+    const [ currentPrompt, setCurrentPrompt ] = useState({})
+    //promptNumber will eventually load from the character information
     const [ promptNumber, setPromptNumber ] = useState(1)
-    const [ score, setScore ] = useState(0)
-    const [ optionType, setOptionType ] = useState("")
     const [ currentHarm, setCurrentHarm ] = useState({
         levelOne: 0,
         levelTwo: 0
     })
 
-    const sendHighScore = () => {
-        fetch('http://localhost:7000/addscores', {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-                    username: playerName,
-                    score: score
-            })
-        }).then(response => response.json())
-        .catch(error => console.error(error))
-    }
+    useEffect( () => {
+        fetch( `http://127.0.0.1:9000/prompts/${promptNumber}` )
+        .then( response => response.json())
+        .then( prompt => setCurrentPrompt( prompt ) )
+        .catch( error => console.error(error) )
+    }, [ promptNumber ])
+
+    // this will be for when i can add dice rolls to certain types of options, i.e attacks
+    // useEffect( () => {
+    //     if ( currentPrompt.optionType === "attack" ) {
+    //         determineHarmTaken()
+    //     }
+    // }, [ currentPrompt.optionType ])
     
     const determineHarmTaken = () => {
         let roll = roll6SidedDie()
-        dispatch({ type: "DICEROLL", payload: roll})
+        dispatch({ type: "DICERESULT", payload: roll})
 
-        if (roll === 6) {
-        } else if (roll === 5 || roll === 4) {
-            setCurrentHarm({currentHarm: {
+        if ( roll === 6 ) {
+        } else if ( roll === 5 || roll === 4 ) {
+            setCurrentHarm({ currentHarm: {
                     ...currentHarm,  
                     levelOne: currentHarm.levelOne + 1, 
                 }
             })
         } else {
             setCurrentHarm(
-                {currentHarm: {
+                { currentHarm: {
                     ...currentHarm,  
                     levelTwo: currentHarm.levelTwo + 1, 
                 }}
             )
         }
-        setOptionType("")
+        setCurrentPrompt({ optionType: "" })
     }
 
     const resetDiceResult = () => {
-        dispatch({type: "DICERESULT", payload: ""})
+        dispatch({ type: "DICERESULT", payload: "" })
     }
         
     return (
@@ -68,24 +67,22 @@ const Main = () =>{
                 <div className="hud-body">
                     <section className="player">
                         <PlayerInformation
-                            playerName={playerName}
-                            playerClass={playerClass}
-                            currentHarm={currentHarm}
+                            playerName={ playerName }
+                            playerClass={ playerClass }
+                            currentHarm={ currentHarm }
                         />
                     </section>
                     <section className="prompt">
                         <Prompt 
-                            promptNumber={promptNumber}
-                            setPromptNumber={setPromptNumber}
-                            currentScore={score}
-                            setOptionType={setOptionType}
-                            resetDiceResult={resetDiceResult}
-                            sendHighScore={sendHighScore}
+                            playerName={ playerName }
+                            currentPrompt={currentPrompt}
+                            setPromptNumber={ setPromptNumber }
+                            resetDiceResult={ resetDiceResult }
                         />
                     </section>
                     <section className="inventory">
                         <Inventory
-                            startingEquipment={startingEquipment}
+                            startingEquipment={ startingEquipment }
                         />
                     </section>
                 </div>
