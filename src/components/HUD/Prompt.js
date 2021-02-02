@@ -1,5 +1,4 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import SendHighScore from '../utility/SendHighScore'
 import CreatePromptOption from './CreatePromptOption'
@@ -12,32 +11,35 @@ export default function Prompt({
     }) {
 
     const dispatch = useDispatch()    
-    const history = useHistory()
-    const playerScore = useSelector( state => state.playerScore)
+    // const playerScore = useSelector( state => state.playerScore)
     const currentPromptLength = Object.keys(currentPrompt).length
-
+    
+    //change to prompt number instead of event.target.id
     let selectPromptOption = (event, option) => {
-        
         if (event.target.id <= 20) { 
             setPromptNumber(option.next_prompt)
-            dispatch({ type: "INCREASESCORE", payload: 100 })
-            resetDiceResult()
-        }
-        else {
-            SendHighScore( playerName, playerScore )
-            history.push('/credits')
+            // dispatch({ type: "INCREASESCORE", payload: 100 })
+            // resetDiceResult()
         }
     }
     
     const createPromptText = () => {
         if ( currentPromptLength > 0 ) {
             return currentPrompt.prompt_text.split("*").map( ( text, index ) => {
+                //splits the text to interpolate the variables needed, only using playerName right now
+                let textArray = text.split("$")
+                for ( let i = 0; i < textArray.length; i++) {
+                    if ( textArray[i] === "playerName") {
+                        textArray[i] = playerName
+                    }
+                }
+                text = textArray.join('')
                 return (
                     <p 
                         className="prompt-text" 
                         key={ index }
                     >
-                        { text }
+                        {text}
                     </p>
                 )
             })
@@ -59,7 +61,7 @@ export default function Prompt({
     return (
         <>
             <div className='prompt-header'>
-                <h1 className="current-episode">{currentPrompt.title}</h1>
+                <h1 className="current-episode">{currentPrompt.episode}</h1>
             </div>
             <div className="prompt-texts">
                 <div>{createPromptText()}</div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import Inventory from './Inventory'
 import PlayerInformation from './PlayerInformation'
 import Prompt from './Prompt'
@@ -20,12 +21,17 @@ const Main = () =>{
         levelOne: 0,
         levelTwo: 0
     })
+    const history = useHistory()
 
     useEffect( () => {
-        fetch( `http://127.0.0.1:9000/prompts/${promptNumber}` )
-        .then( response => response.json())
-        .then( prompt => setCurrentPrompt( prompt ) )
-        .catch( error => console.error(error) )
+        if ( promptNumber <= 20) {
+            fetch( `http://127.0.0.1:9000/prompts/${promptNumber}` )
+            .then( response => response.json())
+            .then( prompt => setCurrentPrompt( prompt ) )
+            .catch( error => console.error(error) )
+        } else {
+            history.push('/credits')
+        }
     }, [ promptNumber ])
 
     // this will be for when i can add dice rolls to certain types of options, i.e attacks
