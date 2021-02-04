@@ -1,0 +1,87 @@
+#signin-page {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('assets/signin.jpeg');
+    background-size: cover;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#home-page-header {
+    display: flex;
+    flex-flow: column wrap;
+    height: 25%; 
+    width: 60%;
+    padding: 15px;
+    background-color: #cbf7f9a3;
+    justify-content: center;
+    align-items: center;  
+}
+
+#game-title {
+    color: #204067;
+    font-size: 50px;
+}
+
+#game-description {
+    color: #204067;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#home-page-body {
+    display: flex;
+    justify-content: center;
+    height: 75%;
+    width: 100%;
+}
+
+#user-form {
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #cbf7f9a3;
+    height: 100%;
+    width: 60%;
+    align-content: center;
+    justify-content: center;
+}
+
+.user-form-input {
+    padding: 15px;
+    margin: 10px;
+    width: fit-content;
+    background-color: rgba(0, 0, 0, 0.201);
+    border-radius: 5px;
+    border-color: #204067;
+    outline-color: #204067;
+    color: #153052;
+    font-size: 22px;
+}
+
+.user-form-input::placeholder {
+    color: #153052;
+    font-size: 22px;
+}
+
+.button {
+    background-color: rgba(0, 0, 0, 0.201);
+    margin-top: 15px;
+    width: 15%;
+    align-self: center;
+    color: #153052;
+}
+
+.button:hover {
+    transform: scale(1.2);
+}
+
+a {
+    color: blue;
+}
+
+p {
+    font-size: 18px;
+    align-self: center;
+}

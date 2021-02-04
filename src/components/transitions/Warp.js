@@ -9,8 +9,7 @@ export default class Warp extends Component {
     }
 
     render() {
-    return <img id="warp-transition"src="https://media1.tenor.com/images/ee8a70f6675d434d94396b174ba057a3/tenor.gif"alt="gif that looks like hyperspace"/>
-
+      return <img id="warp-transition"src="https://media1.tenor.com/images/ee8a70f6675d434d94396b174ba057a3/tenor.gif"alt="gif that looks like hyperspace"/>
     }
 }
 

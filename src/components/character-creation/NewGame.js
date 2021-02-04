@@ -13,6 +13,7 @@ const NewGame = () => {
     const chosenClassType = classTypes[playerClass]
     
     useEffect( () => {
+        //change into a function
         fetch('http://127.0.0.1:9000/class_types')
         .then(response => response.json())
         .then(classTypes => mapClassTypeToState(classTypes))
