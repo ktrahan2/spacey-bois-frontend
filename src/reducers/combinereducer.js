@@ -5,6 +5,7 @@ import playerClass from './playerClass'
 import diceResult from './diceResult'
 import playerScore from './playerScore'
 import user from './user'
+import myCharacter from './character'
 
 const reducer = combineReducers({
   playerName, 
@@ -12,7 +13,8 @@ const reducer = combineReducers({
   startingEquipment,
   diceResult,
   playerScore,
-  user
+  user,
+  myCharacter
 })
   
 export const store = createStore(reducer)

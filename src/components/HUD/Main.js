@@ -15,17 +15,24 @@ const Main = () =>{
     const startingEquipment = useSelector( state => state.startingEquipment )
 
     const [ currentPrompt, setCurrentPrompt ] = useState({})
-    //promptNumber will eventually load from the character information
+    //promptNumber will load from character
     const [ promptNumber, setPromptNumber ] = useState(1)
     const [ currentHarm, setCurrentHarm ] = useState({
         levelOne: 0,
         levelTwo: 0
     })
     const history = useHistory()
-
+    const character = useSelector(state => state.myCharacter)
+    console.log(character)
     useEffect( () => {
-        if ( promptNumber <= 20) {
-            fetch( `http://127.0.0.1:9000/prompts/${promptNumber}` )
+        if ( promptNumber <= 20 ) {
+            fetch( `http://127.0.0.1:9000/prompts/${promptNumber}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${window.localStorage.token}`    
+                }
+            } )
             .then( response => response.json())
             .then( prompt => setCurrentPrompt( prompt ) )
             .catch( error => console.error(error) )
@@ -81,7 +88,7 @@ const Main = () =>{
                     <section className="prompt">
                         <Prompt 
                             playerName={ playerName }
-                            currentPrompt={currentPrompt}
+                            currentPrompt={ currentPrompt } 
                             setPromptNumber={ setPromptNumber }
                             resetDiceResult={ resetDiceResult }
                         />

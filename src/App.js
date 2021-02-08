@@ -14,9 +14,7 @@ export default function App(){
 
   return (
     <div className="App">
-      <header>
-
-      </header>
+      {/* add protected routes */}
       <main>
         <Switch>          
           <Route path="/" component={Home} exact/>

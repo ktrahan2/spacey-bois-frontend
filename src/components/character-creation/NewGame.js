@@ -11,14 +11,23 @@ const NewGame = () => {
     const playerClass = useSelector(state => state.playerClass)
     const classTypesLength = Object.keys(classTypes).length
     const chosenClassType = classTypes[playerClass]
-    
+
     useEffect( () => {
-        //change into a function
-        fetch('http://127.0.0.1:9000/class_types')
+        fetchClassTypes()
+    }, [])
+
+    const fetchClassTypes = () => {
+        fetch('http://127.0.0.1:9000/class_types', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${window.localStorage.token}`
+            }
+        })
         .then(response => response.json())
         .then(classTypes => mapClassTypeToState(classTypes))
         .catch(error => console.error(error))
-    }, [])
+    }
 
     const mapClassTypeToState = ( classTypes ) => {
         const mappedClassTypes = {}
@@ -32,7 +41,6 @@ const NewGame = () => {
 
     const renderClassDescription = () => {
         if ( classTypesLength > 0 && playerClass ) {
-            
             return (
                 <section key={chosenClassType.id}>
                     <h2>{chosenClassType.name}</h2>
@@ -48,7 +56,8 @@ const NewGame = () => {
     return (
         <div className="create-character-body">
             <header className="create-character-header">
-                <Link  className="link" to="/">Main Menu</Link>
+                {/* fix the css to not cause the vertical to grow when hovering */}
+                <Link  className="link" to="/character-selection">Character Selection</Link>
             </header>
             <main className="create-character-main">
                 <div className="creation-middle">

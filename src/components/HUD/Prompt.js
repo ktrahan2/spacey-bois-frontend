@@ -11,14 +11,12 @@ export default function Prompt({
     }) {
 
     const dispatch = useDispatch()    
-    // const playerScore = useSelector( state => state.playerScore)
     const currentPromptLength = Object.keys(currentPrompt).length
     
     //change to prompt number instead of event.target.id
     let selectPromptOption = (event, option) => {
         if (event.target.id <= 20) { 
             setPromptNumber(option.next_prompt)
-            // dispatch({ type: "INCREASESCORE", payload: 100 })
             // resetDiceResult()
         }
     }

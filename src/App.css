@@ -25,41 +25,6 @@
   font-size: 30px;
 }
 
-.starting-menu {
-  background-image: url('https://i.imgur.com/rBc4zVm.jpg');
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  flex-flow: column wrap;
-  justify-content: flex-end;
-}
-
-.menu-placement {
-  display: flex;
-  width: 100%;
-  height: 70vh;
-  justify-content: flex-end;
-}
-
-.menu-options {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  border-bottom: 15px solid rgba(107, 80, 225, 0.488);
-  border-left: 10px solid rgba(107, 80, 225, 0.482);
-  border-top: 12px solid rgba(192, 192, 192, 0.66);
-  border-right: 8px solid gba(192, 192, 192, 0.66);
-  border-style: groove;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.399);
-  height: 200px;
-  width: 400px;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 70px 0 0;
-}
-
 .create-character-body {
   background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2b718ecb-3a11-4472-b77c-4a68e53d8d54/d7fi7rw-069c1bef-c038-4a2e-93b1-7a76b53b522a.jpg/v1/fill/w_1024,h_576,q_75,strp/mundus_novus__the_bridge_by_xelfrepuslax_d7fi7rw-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01NzYiLCJwYXRoIjoiXC9mXC8yYjcxOGVjYi0zYTExLTQ0NzItYjc3Yy00YTY4ZTUzZDhkNTRcL2Q3Zmk3cnctMDY5YzFiZWYtYzAzOC00YTJlLTkzYjEtN2E3NmI1M2I1MjJhLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.9IxDxzbjPBhlFf_YGi7MipbtMwt6r3nzznYRPaIppR0');
   background-size: cover;
@@ -152,7 +117,7 @@
 }
 
 .link {
-  color: white;
+  color: black;
   font-size: 30px;
   text-decoration: none;
 }
@@ -166,13 +131,7 @@
   height: 150px;
 }
 
-.starting-menu {
-  display: flex;
-  flex-flow: column wrap;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-}
+
 
 .player-hud {
   display: flex;

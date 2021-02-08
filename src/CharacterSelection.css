@@ -1,0 +1,30 @@
+#character-selection {
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-flow: row wrap;
+  }
+
+#character-list {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+#character-description {
+    display: flex;
+    width: 45%;
+}
+
+.link {
+    display: flex;
+    width: 100%;
+}
+
+.link:hover {
+    transform: none
+}
+  

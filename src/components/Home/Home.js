@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import '../../Home.css'
 
@@ -8,18 +8,17 @@ const Home = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [ isSignup, setIsSignUp ] = useState(false)
-    const user = useSelector(state => state.user)
     const [ userFormData, setuserFormData ] = useState({
         username: "",
         email: "",
         password: "",
         passwordVerify: ""
     })
-
+    //currently moves forward with wrong password, change history push
     const signin = ( event ) => {
         event.preventDefault()
         if ( isSignup && userFormData.password !== userFormData.passwordVerify ) {
-            console.log("make error message")
+            console.log("make error message that passwords dont match")
         } else if ( isSignup && userFormData.password === userFormData.passwordVerify ) {
             createNewUser()
         } else {
@@ -62,8 +61,7 @@ const Home = () => {
 
     const saveUserInfo = ( result ) => {
         localStorage.setItem('token', result.token)
-        localStorage.setItem('user', result.user)
-        dispatch({ type: "SETUSER", payload: result.user })
+        localStorage.setItem('userId', result.user)
         history.push("/character-selection")
     }
 
