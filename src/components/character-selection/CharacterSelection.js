@@ -7,8 +7,9 @@ const CharacterSelection = () => {
     
     const userId = localStorage.getItem('userId')
     const user = useSelector(state => state.user)
+    const character = useSelector(state=> state.myCharacter)
     const dispatch = useDispatch()
-
+console.log(character)
     useEffect( () => {
         setUser()
     }, [])
@@ -32,14 +33,14 @@ const CharacterSelection = () => {
         if ( Object.keys(user).length > 0 ) {
             const characterList = user.characters
             return characterList.map( character => (
-                <Link 
+                <div 
                     key={character.id} 
-                    className="link" 
+                    className="character-names"
                     onClick={ () => dispatch({type: "SETCHARACTER", payload: character}) } 
                     to="/enter-the-nautilus"
                 >
                     {character.name}
-                </Link>
+                </div>
             ))
         } 
     }
@@ -47,13 +48,14 @@ const CharacterSelection = () => {
     return (
         <section id="character-selection">
             <div id="character-list">
-                <h1>Characters:</h1>
+                <h1 id="title">Current Characters</h1>
                 {createCharacterLinks()} 
-                <Link className="link" to="/warp">Create New Character</Link>
+                <Link id="select-character" className="link" to="/enter-the-nautilus">Select Character</Link>
             </div>
             <div id="character-description">
-
+                { Object.keys(character).length > 0 ? console.log("show character stats") : null }
             </div>
+            <Link className="link" to="/warp">Create New Character</Link>
         </section>
     )
 }

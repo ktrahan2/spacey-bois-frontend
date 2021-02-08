@@ -3,28 +3,65 @@
     justify-content: space-around;
     height: 100vh;
     width: 100vw;
+    background-image: url('assets/character-selection.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     flex-flow: row wrap;
-  }
+}
+
+#title {
+    font-size: 36px;
+    align-self: center;
+}
 
 #character-list {
     display: flex;
     flex-direction: column;
+    align-content: center;
+    margin: 10px;
+    background-color: #cbf7f9a3;
+    border: 3px solid;
+    border-color:  #cbf7f9cb;
     width: 45%;
+    height: 70%;
+    color:  #204067;
+    font-weight: bold;
 }
 
 #character-description {
     display: flex;
     width: 45%;
+    height: 70%;
 }
 
 .link {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 20%;
+    font-size: 30px;
+    text-decoration: none;
+    color: Black;
 }
 
 .link:hover {
-    transform: none
+    transform: scale(1.1);
+    text-decoration: underline;
+}
+
+.character-names {
+    font-size: 26px;
+    padding: 5px;
 }
   
+.character-names:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#select-character {
+    align-self: center;
+
+
+}
