@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import '../../Home.css'
 
 const Home = () => {
 
-    const dispatch = useDispatch()
     const history = useHistory()
     const [ isSignup, setIsSignUp ] = useState(false)
     const [ userFormData, setuserFormData ] = useState({
@@ -55,7 +53,14 @@ const Home = () => {
             })
         })
         .then(response => response.json())
-        .then(result => saveUserInfo(result))
+        .then(result => {
+            if ( result.errors ) {
+                //make something to show error to user
+                console.error(result.errors)
+            } else {
+                saveUserInfo(result)
+            }
+        })
         .catch(error => console.error(error))
     }
 
@@ -112,6 +117,7 @@ const Home = () => {
                             autoComplete="off"
                         >
                         </input>
+                        {/* change the anchor tag to just look like blue highlight instead of being an anchor */}
                         <p>Already a member? <a onClick={ () => setIsSignUp(false) }>Sign In</a></p>
                     </>
                     : 

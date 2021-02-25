@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import SendHighScore from '../utility/SendHighScore'
 import CreatePromptOption from './CreatePromptOption'
 
-export default function Prompt({
+const Prompt = ({
         playerName, 
         setPromptNumber, 
         currentPrompt,  
         resetDiceResult,
-    }) {
+    }) => {
 
     const dispatch = useDispatch()    
     const currentPromptLength = Object.keys(currentPrompt).length
@@ -70,3 +70,5 @@ export default function Prompt({
         </>
     )
 }
+
+export default Prompt

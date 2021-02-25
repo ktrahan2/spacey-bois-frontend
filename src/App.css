@@ -124,7 +124,6 @@
 
 .link:hover {
   transform: scale(1.5);
-  text-decoration: underline;
 }
 
 .hud-header {
@@ -151,7 +150,7 @@
 }
 
 .hud {
-  background-image: url('https://i.imgur.com/7Lh16BM.jpg');
+  background-color: rgb(65, 64, 64);
   background-size: cover;
   height: 100vh;
   color: white;
