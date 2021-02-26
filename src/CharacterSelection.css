@@ -18,7 +18,8 @@
 #character-list {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    justify-content: space-between;
+    align-items: center;
     margin: 10px;
     background-color: rgba(28, 74, 130, 0.413);
     border: silver 8px groove;
@@ -27,12 +28,7 @@
     height: 70%;
     color:  white;
     font-weight: bold;
-}
-
-#character-description {
-    display: flex;
-    width: 45%;
-    height: 70%;
+    padding: 10px;
 }
 
 .link {
@@ -45,6 +41,7 @@
     border-radius: 10px;
     color: white;
     border: silver 3px groove;
+    background-color: rgba(28, 74, 130, 0.413);
 }
 
 .link:hover {
@@ -78,5 +75,16 @@
     height: 70%;
     color:  white;
     font-size: 30px;
+    margin: 10px;
 
+}
+
+#emptydiv {
+    width: 45%;
+    height: 70%;
+}   
+
+.disabled {
+    pointer-events: none;
+    background-color: grey;
 }
