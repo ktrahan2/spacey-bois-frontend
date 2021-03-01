@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 const CharacterStats = () => {
 
     const character = useSelector(state => state.myCharacter)
-
+    
     return (
         <div id='character-description'>
             <div>
@@ -14,7 +14,7 @@ const CharacterStats = () => {
             </div>
             <div>
                 <label>Class:</label>    
-                <p>{titleCase(character.class_type.name)}</p>
+                <p>{titleCase(character.name)}</p>
             </div>
             <div>
                 <label>Level:</label>    

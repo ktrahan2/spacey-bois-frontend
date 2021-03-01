@@ -32,12 +32,12 @@ const CharacterSelection = () => {
     const createCharacterLinks = () => {
         if ( Object.keys(user).length > 0 ) {
             const characterList = user.characters
+            
             return characterList.map( character => (
                 <div 
-                    key={character.id} 
-                    className="character-names"
-                    onClick={ () => dispatch({type: "SETCHARACTER", payload: character}) } 
-                    to="/enter-the-nautilus"
+                key={character.id} 
+                className="character-names"
+                onClick={ () => dispatch({type: "SETCHARACTER", payload: character}) } 
                 >
                     {character.name}
                 </div>
@@ -56,7 +56,7 @@ const CharacterSelection = () => {
                     <Link id="select-character" className={ Object.keys(character).length > 0 ? "link" : "link disabled"} to="/enter-the-nautilus">Continue</Link>
                 </div>
             </div>
-            { Object.keys(character).length > 0 ? <CharacterStats/> : <div id="emptydiv"></div> }
+            { character.name !== "" ? <CharacterStats/> : <div id="emptydiv"></div> }
             <div>
                 <Link className="link" to="/warp">Create New Character</Link>
             </div>

@@ -2,82 +2,54 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import CharacterEquipment from './CharacterEquipment'
-import CharacterClassOptions from './CharacterClassOptions'
+import PlayerOptions from './PlayerOptions'
 import '../../NewGame.css'
+import {getFetch, postFetch} from '../fetchCalls'
+import titleCase from '../utility/titleCase'
 
 const NewGame = () => {
 
     const dispatch = useDispatch()
     const [ classTypes, setClassTypes ] = useState({})
     const [ vices, setVices ] = useState({})
-    const playerClass = useSelector(state => state.playerClass)
-    const classTypesLength = Object.keys(classTypes).length
-    let chosenClassType = classTypes[playerClass]
-
+    const [ backgrounds, setBackgrounds ] = useState({})
+    const character = useSelector(state => state.myCharacter)
+    const playerClass = classTypes[character.class_type_id]
+    const playerVice = vices[character.vice_id]
+    const playerBackground = backgrounds[character.background_id]
+    const userId = localStorage.getItem('userId')
+    
     useEffect( () => {
-        fetchClassTypes()
-        fetchVices()
+        getFetch("class_types").then(classTypes => mapDataToState(classTypes, setClassTypes)).catch(error => console.error(error))
+        getFetch("vices").then(vices => mapDataToState(vices, setVices)).catch(error => console.error(error))
+        getFetch("backgrounds").then(backGrounds => mapDataToState(backGrounds, setBackgrounds)).catch(error => console.error(error))
+        dispatch({ type: "SETUSERID", payload: userId})
     }, [])
 
-    const fetchClassTypes = () => {
-        fetch('http://127.0.0.1:9000/class_types', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${window.localStorage.token}`
-            }
-        })
-        .then(response => response.json())
-        .then(classTypes => mapClassTypeToState(classTypes))
-        .catch(error => console.error(error))
-    }
+    const mapDataToState = ( dataArray, setState ) => {
+        const mappedEntries= {}
 
-    const fetchVices = () => {
-        fetch('http://127.0.0.1:9000/vices', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${window.localStorage.token}`
-            }
-        })
-        .then(response => response.json())
-        .then(vices => mapVicesToState(vices))
-        .catch(error => console.error(error))
-    }
-
-    const mapClassTypeToState = ( classTypes ) => {
-        const mappedClassTypes = {}
-
-        classTypes.forEach( classType => {
-            mappedClassTypes[classType.name] = classType
-        })
-        
-        setClassTypes(mappedClassTypes)
-    }
-
-    const mapVicesToState = ( vices ) => {
-        const mappedVices = {}
-
-        vices.forEach( vice => {
-            mappedVices[vice.title] = vice
+        dataArray.forEach( entry => {
+            mappedEntries[entry.id] = entry
         })
 
-        setVices(mappedVices)
+        setState(mappedEntries)
     }
 
-    const renderClassDescription = () => {
-        if ( classTypesLength > 0 && playerClass ) {
-            
+    const renderDescription = ( state ) => {
+        if ( state ) {
             return (
-                <section key={chosenClassType.id}>
-                    <h2>{chosenClassType.name}</h2>
-                    <p>{chosenClassType.description}</p>
-                    <div className="starting-equipment">
-                        <CharacterEquipment classType={chosenClassType}/>
-                    </div>
+                <section key={state.id}>
+                    <h2>{titleCase(state.name) || state.title}</h2>
+                    <p>{state.description}</p>
                 </section>
             )
         }
+    }
+
+    const createCharacter = () => {
+        let body = {character: character}
+        postFetch("characters", body).then(data => console.log(data))
     }
 
     return (
@@ -92,28 +64,41 @@ const NewGame = () => {
                             <p>Choose your characters' name:</p>
                             <input 
                                 className="player-name-input"
-                                onChange={ ( event ) => dispatch({ type: "ADDPLAYERNAME", payload: event.target.value })} 
-                                name="playername" 
+                                onChange={ ( event ) => dispatch({ type: "SETNAME", payload: event.target.value })}  
                                 placeholder="Enter Player Name" 
                             >
                             </input>
                         </div>
                         <div className="choose-class">
                             <p>Choose a class:</p>
-                            <select className="choose-class-selector" onChange={ ( event ) => dispatch({ type: "ADDCLASS", payload: event.target.value })}>
-                                <CharacterClassOptions classTypes={classTypes}/>
+                            <select className="choose-class-selector" onChange={ ( event ) => dispatch({ type: "SETCLASS", payload: event.target.value })}>
+                                <PlayerOptions options={classTypes}/>
+                            </select>
+                        </div>
+                        <div className="choose-class">
+                            <p>Choose a vice:</p>
+                            <select className="choose-class-selector" onChange={ ( event ) => dispatch({ type: "SETVICE", payload: event.target.value })}>
+                                <PlayerOptions options={vices}/>
+                            </select>
+                        </div>
+                        <div className="choose-class">
+                            <p>Choose a background:</p>
+                            <select className="choose-class-selector" onChange={ ( event ) => dispatch({ type: "SETBACKGROUND", payload: event.target.value })}>
+                                <PlayerOptions options={backgrounds}/>
                             </select>
                         </div>
                     </div>
                     <div className="class-information">
-                        {renderClassDescription()}
+                        {renderDescription(playerClass)}
+                        {renderDescription(playerVice)}
+                        {renderDescription(playerBackground)}
                     </div>
                 </div>
                 <div className="start-game">
                     <Link 
                         className="link" 
-                        to="/enter-the-nautilus"
-                        // onClick={ () => dispatch({type: "ADDSTARTINGEQUIPMENT", payload: chosenClassType.starting_equipments})}
+                        // to="/enter-the-nautilus"
+                        onClick={ () => createCharacter()}
                     > Start Game
                     </Link>
                 </div>    
