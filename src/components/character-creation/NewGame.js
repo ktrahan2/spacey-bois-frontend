@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import CharacterEquipment from './CharacterEquipment'
 import CharacterClassOptions from './CharacterClassOptions'
+import '../../NewGame.css'
 
 const NewGame = () => {
 
