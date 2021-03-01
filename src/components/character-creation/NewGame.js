@@ -9,12 +9,14 @@ const NewGame = () => {
 
     const dispatch = useDispatch()
     const [ classTypes, setClassTypes ] = useState({})
+    const [ vices, setVices ] = useState({})
     const playerClass = useSelector(state => state.playerClass)
     const classTypesLength = Object.keys(classTypes).length
-    const chosenClassType = classTypes[playerClass]
+    let chosenClassType = classTypes[playerClass]
 
     useEffect( () => {
         fetchClassTypes()
+        fetchVices()
     }, [])
 
     const fetchClassTypes = () => {
@@ -30,18 +32,42 @@ const NewGame = () => {
         .catch(error => console.error(error))
     }
 
+    const fetchVices = () => {
+        fetch('http://127.0.0.1:9000/vices', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${window.localStorage.token}`
+            }
+        })
+        .then(response => response.json())
+        .then(vices => mapVicesToState(vices))
+        .catch(error => console.error(error))
+    }
+
     const mapClassTypeToState = ( classTypes ) => {
         const mappedClassTypes = {}
 
         classTypes.forEach( classType => {
-            mappedClassTypes[classType.id] = classType
+            mappedClassTypes[classType.name] = classType
         })
         
         setClassTypes(mappedClassTypes)
     }
 
+    const mapVicesToState = ( vices ) => {
+        const mappedVices = {}
+
+        vices.forEach( vice => {
+            mappedVices[vice.title] = vice
+        })
+
+        setVices(mappedVices)
+    }
+
     const renderClassDescription = () => {
         if ( classTypesLength > 0 && playerClass ) {
+            
             return (
                 <section key={chosenClassType.id}>
                     <h2>{chosenClassType.name}</h2>
@@ -57,7 +83,6 @@ const NewGame = () => {
     return (
         <div className="create-character-body">
             <header className="create-character-header">
-                {/* fix the css to not cause the vertical to grow when hovering */}
                 <Link  className="link" to="/character-selection">Character Selection</Link>
             </header>
             <main className="create-character-main">
@@ -88,7 +113,7 @@ const NewGame = () => {
                     <Link 
                         className="link" 
                         to="/enter-the-nautilus"
-                        onClick={ () => dispatch({type: "ADDSTARTINGEQUIPMENT", payload: chosenClassType.starting_equipments})}
+                        // onClick={ () => dispatch({type: "ADDSTARTINGEQUIPMENT", payload: chosenClassType.starting_equipments})}
                     > Start Game
                     </Link>
                 </div>    

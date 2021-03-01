@@ -6,9 +6,9 @@ const CharacterClassOptions = ({ classTypes }) => {
         let optionArray = []
         let classTypesLength = Object.keys(classTypes).length
         if ( classTypesLength > 0 ) {
-            for ( let i = 1; i < classTypesLength + 1; i++) {
-                let currentClass = classTypes[i]
-                optionArray.push(<option value={currentClass.id} key={currentClass.id}>{currentClass.name}</option>)
+            for ( let type in classTypes ) {
+                let currentClass = classTypes[type]
+                optionArray.push(<option value={type} key={currentClass.id}>{currentClass.name}</option>)
             }
             return optionArray
         }
