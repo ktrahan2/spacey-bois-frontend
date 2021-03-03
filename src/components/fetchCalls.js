@@ -12,11 +12,27 @@ export const getFetch = (url) => {
     .then(parseResponse)
 }
 
+export const getOneFetch = (url, id) => {
+    return fetch(`${baseURL}/${url}/${id}`, {
+        method: "GET",
+        headers: headers
+    })
+    .then(parseResponse)
+}
+
 export const postFetch = (url, body) => {
     return fetch(`${baseURL}/${url}`, {
         method: "POST",
         headers: headers,
         body: JSON.stringify(body)
+    })
+    .then(parseResponse)
+}
+
+export const deleteFetch = (url, id) => {
+    return fetch(`${baseURL}/${url}/${id}`, {
+        method: "DELETE",
+        headers: headers
     })
     .then(parseResponse)
 }

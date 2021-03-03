@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import '../../Home.css'
+import { postFetch } from '../fetchCalls'
 
 const Home = () => {
 
@@ -12,11 +13,12 @@ const Home = () => {
         password: "",
         passwordVerify: ""
     })
-    //currently moves forward with wrong password, change history push
+    
     const signin = ( event ) => {
         event.preventDefault()
         if ( isSignup && userFormData.password !== userFormData.passwordVerify ) {
-            console.log("make error message that passwords dont match")
+            //maybe learn how to create custom popup!
+            window.alert('Passwords do not match, try again')
         } else if ( isSignup && userFormData.password === userFormData.passwordVerify ) {
             createNewUser()
         } else {
@@ -25,38 +27,26 @@ const Home = () => {
     }
 
     const createNewUser = () => {
-        fetch('http://127.0.0.1:9000/users', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ user: {
-                username: userFormData.username,
-                password: userFormData.password,
-                email: userFormData.email
-            }})
-        })
-        .then(response => response.json())
+        const body = {user: {
+            username: userFormData.username,
+            password: userFormData.password,
+            email: userFormData.email
+        }}
+        postFetch("users", body)
         .then(result => saveUserInfo(result))
         .catch(error => console.error(error))
     }
 
     const userSignIn = () => {
-        fetch('http://127.0.0.1:9000/login', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: userFormData.username,
-                password: userFormData.password
-            })
-        })
-        .then(response => response.json())
+        const body = {
+            username: userFormData.username,
+            password: userFormData.password
+        }
+        postFetch('login', body)
         .then(result => {
             if ( result.errors ) {
-                //make something to show error to user
-                console.error(result.errors)
+                //create custom pop up
+                window.alert(result.errors)
             } else {
                 saveUserInfo(result)
             }
@@ -118,10 +108,10 @@ const Home = () => {
                         >
                         </input>
                         {/* change the anchor tag to just look like blue highlight instead of being an anchor */}
-                        <p>Already a member? <a onClick={ () => setIsSignUp(false) }>Sign In</a></p>
+                        <p>Already a member? <p className="fake-anchor" onClick={ () => setIsSignUp(false) }>Sign In</p></p>
                     </>
                     : 
-                    <p>Not a member yet? <a onClick={ () => setIsSignUp(true) }>Sign Up</a></p>
+                    <p>Not a member yet? <p className="fake-anchor" onClick={ () => setIsSignUp(true) }>Sign Up</p></p>
                 }
                     <button 
                         className="button"

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../../CharacterSelection.css'
+import { deleteFetch, getOneFetch } from '../fetchCalls'
 import CharacterStats from './CharacterStats'
 const CharacterSelection = () => {
     
@@ -12,14 +13,7 @@ const CharacterSelection = () => {
     const dispatch = useDispatch()
     
     const setUser = () => {
-        fetch(`http://127.0.0.1:9000/users/${userId}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${window.localStorage.token}` 
-            }
-        })
-        .then(response => response.json())
+        getOneFetch('users', userId)
         .then(user => {
             dispatch({type: "SETUSER", payload: user})
             setCharacterList(user.characters)
@@ -45,20 +39,13 @@ const CharacterSelection = () => {
             ))
         } 
     }
-
+    //create are you sure sequence
     const deleteCharacter = (event) => {
         event.preventDefault()
         let selectedCharacters = characterList.filter( thisCharacter => thisCharacter.id !== character.id)
         setCharacterList(selectedCharacters)
         dispatch({type: "RESETCHARACTER"})
-        fetch(`http://127.0.0.1:9000/characters/${character.id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${window.localStorage.token}` 
-            }
-        })
-        .then(response => response.json())
+        deleteFetch("characters", character.id)
         .then(data => console.log(data))
     }
 

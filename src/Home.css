@@ -68,7 +68,7 @@
 .button {
     background-color: rgba(0, 0, 0, 0.201);
     margin-top: 15px;
-    width: 15%;
+    width: fit-content;
     align-self: center;
     color: #153052;
 }
@@ -84,4 +84,14 @@ a {
 p {
     font-size: 18px;
     align-self: center;
+    display: inline;
+}
+
+.fake-anchor {
+    color: blue;
+
+}
+
+.fake-anchor:hover {
+    cursor: pointer;
 }

@@ -6,6 +6,7 @@ import Inventory from './Inventory'
 import PlayerInformation from './PlayerInformation'
 import Prompt from './Prompt'
 import roll6SidedDie from '../utility/roll6sideddie'
+import { getOneFetch } from '../fetchCalls';
 
 const Main = () =>{
 
@@ -23,17 +24,10 @@ const Main = () =>{
     })
     const history = useHistory()
     const character = useSelector(state => state.myCharacter)
-    console.log(character)
+    
     useEffect( () => {
         if ( promptNumber <= 20 ) {
-            fetch( `http://127.0.0.1:9000/prompts/${promptNumber}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${window.localStorage.token}`    
-                }
-            } )
-            .then( response => response.json())
+            getOneFetch("prompts", promptNumber)
             .then( prompt => setCurrentPrompt( prompt ) )
             .catch( error => console.error(error) )
         } else {
