@@ -55,7 +55,7 @@ const NewGame = () => {
     return (
         <div className="create-character-body">
             <header className="create-character-header">
-                <Link  className="link" to="/character-selection">Character Selection</Link>
+                <Link  className="link" to="/character-selection" onClick={() => dispatch({type: "RESETCHARACTER"})}>Character Selection</Link>
             </header>
             <main className="create-character-main">
                 <div className="creation-middle">

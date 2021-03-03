@@ -88,3 +88,10 @@
     pointer-events: none;
     background-color: grey;
 }
+
+#character-manipulation-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-around;
+}

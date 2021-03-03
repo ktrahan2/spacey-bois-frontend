@@ -1,6 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import SendHighScore from '../utility/SendHighScore'
+import { useDispatch } from 'react-redux'
 import CreatePromptOption from './CreatePromptOption'
 
 const Prompt = ({
@@ -10,7 +9,7 @@ const Prompt = ({
         resetDiceResult,
     }) => {
 
-    const dispatch = useDispatch()    
+    // const dispatch = useDispatch()    
     const currentPromptLength = Object.keys(currentPrompt).length
     
     //change to prompt number instead of event.target.id

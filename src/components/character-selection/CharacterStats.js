@@ -14,7 +14,7 @@ const CharacterStats = () => {
             </div>
             <div>
                 <label>Class:</label>    
-                <p>{titleCase(character.name)}</p>
+                <p>{titleCase(character.class_type.name)}</p>
             </div>
             <div>
                 <label>Level:</label>    

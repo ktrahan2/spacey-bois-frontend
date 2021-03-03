@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../../CharacterSelection.css'
@@ -8,11 +8,8 @@ const CharacterSelection = () => {
     const userId = localStorage.getItem('userId')
     const user = useSelector(state => state.user)
     const character = useSelector(state => state.myCharacter)
+    const [characterList, setCharacterList] = useState([])
     const dispatch = useDispatch()
-    
-    useEffect( () => {
-        setUser()
-    }, [])
     
     const setUser = () => {
         fetch(`http://127.0.0.1:9000/users/${userId}`, {
@@ -25,13 +22,17 @@ const CharacterSelection = () => {
         .then(response => response.json())
         .then(user => {
             dispatch({type: "SETUSER", payload: user})
+            setCharacterList(user.characters)
         })
         .catch(error => console.error(error))
     }
 
-    const createCharacterLinks = () => {
+    useEffect( () => {
+        setUser()
+    }, [])
+    
+    const selectCharacterLinks = () => {
         if ( Object.keys(user).length > 0 ) {
-            const characterList = user.characters
             
             return characterList.map( character => (
                 <div 
@@ -45,15 +46,32 @@ const CharacterSelection = () => {
         } 
     }
 
+    const deleteCharacter = (event) => {
+        event.preventDefault()
+        let selectedCharacters = characterList.filter( thisCharacter => thisCharacter.id !== character.id)
+        setCharacterList(selectedCharacters)
+        dispatch({type: "RESETCHARACTER"})
+        fetch(`http://127.0.0.1:9000/characters/${character.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${window.localStorage.token}` 
+            }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+    }
+
     return (
         <section id="character-selection">
             <div id="character-list">
                 <div>
                     <h1 id="title">Current Characters</h1>
-                    {createCharacterLinks()} 
+                    {selectCharacterLinks()} 
                 </div>
-                <div>
+                <div id="character-manipulation-buttons">
                     <Link id="select-character" className={ Object.keys(character).length > 0 ? "link" : "link disabled"} to="/enter-the-nautilus">Continue</Link>
+                    <Link to="" onClick={event => deleteCharacter(event)} className="link">Delete</Link>
                 </div>
             </div>
             { character.name !== "" ? <CharacterStats/> : <div id="emptydiv"></div> }

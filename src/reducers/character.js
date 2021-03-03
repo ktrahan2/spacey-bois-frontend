@@ -26,6 +26,8 @@ const myCharacter = ( state=initialState, action ) => {
             return {...state, background_id: action.payload}
         case "SETUSERID":
             return {...state, user_id: action.payload}
+        case "RESETCHARACTER":
+            return initialState
         default: 
             return state
     }
