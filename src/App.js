@@ -9,6 +9,7 @@ import Warp from "./components/transitions/Warp"
 import EnterTheNautilus from './components/transitions/EnterTheNautilus'
 import FinishEpisodeOne from './components/transitions/FinishEpisodeOne'
 import CharacterSelection from './components/character-selection/CharacterSelection'
+import PrivateRoute from './components/utility/PrivateRoute'
 
 export default function App(){
 
@@ -18,13 +19,13 @@ export default function App(){
       <main>
         <Switch>          
           <Route path="/" component={Home} exact/>
-          <Route path="/character-selection" component={CharacterSelection}/>
-          <Route path="/highscores" component={CreateTable}/>
-          <Route path="/newgame" component={NewGame}/> 
-          <Route path="/hud" component={MainHUD}/>
-          <Route path="/warp" component={Warp}/>
-          <Route path="/enter-the-nautilus" component={EnterTheNautilus}/>
-          <Route path="/credits" component={FinishEpisodeOne}/>
+          <PrivateRoute path="/character-selection" component={CharacterSelection}/>
+          <PrivateRoute path="/highscores" component={CreateTable}/>
+          <PrivateRoute path="/newgame" component={NewGame}/> 
+          <PrivateRoute path="/hud" component={MainHUD}/>
+          <PrivateRoute path="/warp" component={Warp}/>
+          <PrivateRoute path="/enter-the-nautilus" component={EnterTheNautilus}/>
+          <PrivateRoute path="/credits" component={FinishEpisodeOne}/>
         </Switch>
       </main>
     </div>

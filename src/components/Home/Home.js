@@ -13,7 +13,7 @@ const Home = () => {
         password: "",
         passwordVerify: ""
     })
-    
+
     const signin = ( event ) => {
         event.preventDefault()
         if ( isSignup && userFormData.password !== userFormData.passwordVerify ) {
@@ -22,7 +22,7 @@ const Home = () => {
         } else if ( isSignup && userFormData.password === userFormData.passwordVerify ) {
             createNewUser()
         } else {
-            userSignIn()
+            userSignIn()  
         }
     }
 
@@ -33,7 +33,14 @@ const Home = () => {
             email: userFormData.email
         }}
         postFetch("users", body)
-        .then(result => saveUserInfo(result))
+        .then(result => {
+            if ( result.errors ) {
+                //create custom pop up
+                window.alert(result.errors)
+            } else {
+                saveUserInfo(result)
+            }
+        })
         .catch(error => console.error(error))
     }
 
@@ -56,8 +63,8 @@ const Home = () => {
 
     const saveUserInfo = ( result ) => {
         localStorage.setItem('token', result.token)
-        localStorage.setItem('userId', result.user)
-        history.push("/character-selection")
+        localStorage.setItem('userId', result.userId)
+        history.push('character-selection')
     }
 
     return (
@@ -118,7 +125,7 @@ const Home = () => {
                         onClick={ (event) => signin(event)}
                     >
                         { isSignup ? "Sign Up" : "Sign In"}
-                    </button>
+                    </button>           
                 </div>
             </div>
         </div>

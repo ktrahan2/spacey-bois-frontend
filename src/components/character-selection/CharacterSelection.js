@@ -4,29 +4,30 @@ import { Link } from 'react-router-dom'
 import '../../CharacterSelection.css'
 import { deleteFetch, getOneFetch } from '../fetchCalls'
 import CharacterStats from './CharacterStats'
+
 const CharacterSelection = () => {
     
     const userId = localStorage.getItem('userId')
-    const user = useSelector(state => state.user)
     const character = useSelector(state => state.myCharacter)
     const [characterList, setCharacterList] = useState([])
     const dispatch = useDispatch()
     
-    const setUser = () => {
-        getOneFetch('users', userId)
+    useEffect( () => {
+        setUser()
+    }, [])
+
+    const setUser = async () => {
+        const token = await localStorage.getItem('token')
+        getOneFetch('users', userId, token)
         .then(user => {
             dispatch({type: "SETUSER", payload: user})
             setCharacterList(user.characters)
         })
         .catch(error => console.error(error))
     }
-
-    useEffect( () => {
-        setUser()
-    }, [])
     
     const selectCharacterLinks = () => {
-        if ( Object.keys(user).length > 0 ) {
+        if ( characterList ) {
             
             return characterList.map( character => (
                 <div 

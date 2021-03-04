@@ -1,9 +1,12 @@
 const baseURL = 'http://localhost:9000'
 const parseResponse = response => response.json()
+//token was setting to slowly for the getOneFetch can maybe slow down
+//that fetch instead of passing the token?
 const headers = {
     "Content-Type": "application/json",
     "Authorization": `Bearer ${window.localStorage.token}`
 }
+
 export const getFetch = (url) => {
     return fetch(`${baseURL}/${url}`, {
         method: "GET",
@@ -12,10 +15,13 @@ export const getFetch = (url) => {
     .then(parseResponse)
 }
 
-export const getOneFetch = (url, id) => {
+export const getOneFetch = (url, id, token) => {
     return fetch(`${baseURL}/${url}/${id}`, {
         method: "GET",
-        headers: headers
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
     })
     .then(parseResponse)
 }
