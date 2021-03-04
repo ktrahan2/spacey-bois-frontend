@@ -8,6 +8,7 @@ import CharacterStats from './CharacterStats'
 const CharacterSelection = () => {
     
     const userId = localStorage.getItem('userId')
+    const user = useSelector( state => state.user)
     const character = useSelector(state => state.myCharacter)
     const [characterList, setCharacterList] = useState([])
     const dispatch = useDispatch()
@@ -16,8 +17,8 @@ const CharacterSelection = () => {
         setUser()
     }, [])
 
-    const setUser = async () => {
-        const token = await localStorage.getItem('token')
+    const setUser = () => {
+        const token = localStorage.getItem('token')
         getOneFetch('users', userId, token)
         .then(user => {
             dispatch({type: "SETUSER", payload: user})

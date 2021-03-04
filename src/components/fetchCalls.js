@@ -1,16 +1,20 @@
 const baseURL = 'http://localhost:9000'
 const parseResponse = response => response.json()
-//token was setting to slowly for the getOneFetch can maybe slow down
-//that fetch instead of passing the token?
-const headers = {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${window.localStorage.token}`
+//headers wasnt setting fast enough for the getOneFetch so
+// I made it a function
+const headers = () => {
+    return (
+        {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    )
 }
 
 export const getFetch = (url) => {
     return fetch(`${baseURL}/${url}`, {
         method: "GET",
-        headers: headers
+        headers: headers()
     })
     .then(parseResponse)
 }
@@ -18,10 +22,7 @@ export const getFetch = (url) => {
 export const getOneFetch = (url, id, token) => {
     return fetch(`${baseURL}/${url}/${id}`, {
         method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        }
+        headers: headers()
     })
     .then(parseResponse)
 }
@@ -29,7 +30,7 @@ export const getOneFetch = (url, id, token) => {
 export const postFetch = (url, body) => {
     return fetch(`${baseURL}/${url}`, {
         method: "POST",
-        headers: headers,
+        headers: headers(),
         body: JSON.stringify(body)
     })
     .then(parseResponse)
@@ -38,7 +39,7 @@ export const postFetch = (url, body) => {
 export const deleteFetch = (url, id) => {
     return fetch(`${baseURL}/${url}/${id}`, {
         method: "DELETE",
-        headers: headers
+        headers: headers()
     })
     .then(parseResponse)
 }
