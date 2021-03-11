@@ -5,7 +5,7 @@ import CharacterEquipment from './CharacterEquipment'
 import PlayerOptions from './PlayerOptions'
 import '../../NewGame.css'
 import {getFetch, postFetch} from '../fetchCalls'
-import titleCase from '../utility/titleCase'
+import RenderDescription from './RenderDescription'
 
 const NewGame = () => {
 
@@ -36,17 +36,6 @@ const NewGame = () => {
         setState(mappedEntries)
     }
 
-    const renderDescription = ( state ) => {
-        if ( state ) {
-            return (
-                <section key={state.id}>
-                    <h2>{titleCase(state.name) || state.title}</h2>
-                    <p>{state.description}</p>
-                </section>
-            )
-        }
-    }
-
     const createCharacter = () => {
         let body = {character: character}
         postFetch("characters", body).then(data => console.log(data))
@@ -69,29 +58,29 @@ const NewGame = () => {
                             >
                             </input>
                         </div>
-                        <div className="choose-class">
+                        <div className="detail-selector-container">
                             <p>Choose a class:</p>
-                            <select className="choose-class-selector" onChange={ ( event ) => dispatch({ type: "SETCLASS", payload: event.target.value })}>
+                            <select className="detail-select" onChange={ ( event ) => dispatch({ type: "SETCLASS", payload: event.target.value })}>
                                 <PlayerOptions options={classTypes}/>
                             </select>
                         </div>
-                        <div className="choose-class">
+                        <div className="detail-selector-container">
                             <p>Choose a vice:</p>
-                            <select className="choose-class-selector" onChange={ ( event ) => dispatch({ type: "SETVICE", payload: event.target.value })}>
+                            <select className="detail-select" onChange={ ( event ) => dispatch({ type: "SETVICE", payload: event.target.value })}>
                                 <PlayerOptions options={vices}/>
                             </select>
                         </div>
-                        <div className="choose-class">
+                        <div className="detail-selector-container">
                             <p>Choose a background:</p>
-                            <select className="choose-class-selector" onChange={ ( event ) => dispatch({ type: "SETBACKGROUND", payload: event.target.value })}>
+                            <select className="detail-select" onChange={ ( event ) => dispatch({ type: "SETBACKGROUND", payload: event.target.value })}>
                                 <PlayerOptions options={backgrounds}/>
                             </select>
                         </div>
                     </div>
-                    <div className="class-information">
-                        {renderDescription(playerClass)}
-                        {renderDescription(playerVice)}
-                        {renderDescription(playerBackground)}
+                    <div id="details">
+                        <RenderDescription input={playerClass}/>
+                        <RenderDescription input={playerVice}/>
+                        <RenderDescription input={playerBackground}/>                                                
                     </div>
                 </div>
                 <div className="start-game">

@@ -19,7 +19,7 @@ export const getFetch = (url) => {
     .then(parseResponse)
 }
 
-export const getOneFetch = (url, id, token) => {
+export const getOneFetch = (url, id) => {
     return fetch(`${baseURL}/${url}/${id}`, {
         method: "GET",
         headers: headers()

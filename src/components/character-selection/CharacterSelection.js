@@ -18,8 +18,7 @@ const CharacterSelection = () => {
     }, [])
 
     const setUser = () => {
-        const token = localStorage.getItem('token')
-        getOneFetch('users', userId, token)
+        getOneFetch('users', userId)
         .then(user => {
             dispatch({type: "SETUSER", payload: user})
             setCharacterList(user.characters)

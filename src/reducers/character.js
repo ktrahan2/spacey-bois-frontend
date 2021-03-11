@@ -1,16 +1,15 @@
 const initialState = {
     user_id: 0,
     name: "",
-    class_type_id: 0,
-    vice_id: 0,
-    background_id: 0,
+    class_type_id: 1,
+    vice_id: 1,
+    background_id: 1,
     heritage_id: 0,
     level: 1,
     current_harm: 0,
     experience_tracker: 0,
     current_prompt: 1
 }
-
 
 const myCharacter = ( state=initialState, action ) => {
     switch( action.type ) {
