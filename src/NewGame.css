@@ -12,19 +12,20 @@
 .create-character-header {
   display: flex;
   justify-content: flex-end;
-  height: 100px;
+  height: 15%;
   padding: 20px 50px;
 }
 
 .create-character-main {
   display: flex;
   flex-flow: column wrap;
+  height: 85%;
 }
 
 .creation-middle {
   display: flex;
   width: 100%;
-  height: 600px;
+  height: 85%;
 }
 
 .player-input {
@@ -59,6 +60,7 @@
 
 ::placeholder {
   color: white;
+  text-align: center;
 }
 
 .detail-selector-container{
@@ -102,10 +104,65 @@
   justify-content: space-evenly;
 }
 
-.start-game {
+.button-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: flex-end;
   width: 100%;
-  height: 100px;
+  height: 15%;
+  padding-bottom: 15px;
+}
+
+#attribute-adjustment {
+  display: flex;
+  flex-flow: row wrap;
+  width: 90%;
+  height: 85%;
+  background-color: rgba(28, 74, 130, 0.413);
+  align-self: center;
+  border-radius: 10px;
+}
+
+#total-points {
+  width: 100%;
+  align-self: center;
+  text-align: center;
+}
+
+.attribute-card {
+  width: 50%;
+  height: 12%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.attribute {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.change-score {
+  font-size: 25px;
+  padding: 0 10px;
+  margin: 0 15px;
+  border: silver 3px groove;
+  border-radius: 50%;
+  color: silver;
+}
+
+.grey-out {
+  font-size: 25px;
+  padding: 0 10px;
+  margin: 0 15px;
+  border: silver 3px groove;
+  background-color: grey;
+  border-radius: 50%;
+}
+
+.change-score:hover {
+  cursor: pointer;
 }

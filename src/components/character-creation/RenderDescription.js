@@ -1,8 +1,8 @@
 import React from 'react'
 import titleCase from '../utility/titleCase'
 
-export default function RenderDescription({input}) {
-    console.log(input)
+const RenderDescription = ({input}) => {
+    
     if ( input ) {
         return (
             <section className="detail-sections"key={input.id}>
@@ -16,3 +16,5 @@ export default function RenderDescription({input}) {
         )
     } 
 }
+
+export default RenderDescription

@@ -3,6 +3,10 @@
   font-family: 'Staatliches';
 }
 
+*:hover {
+  cursor: default;
+}
+
 #warp-transition {
   width: 100vw;
   height: 100vh;
@@ -33,6 +37,7 @@
 
 .link:hover {
   transform: scale(1.5);
+  cursor: pointer;
 }
 
 .hud-header {

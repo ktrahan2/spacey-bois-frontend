@@ -34,6 +34,7 @@ const Home = () => {
         }}
         postFetch("users", body)
         .then(result => {
+            
             if ( result.errors ) {
                 //create custom pop up
                 window.alert(result.errors)
